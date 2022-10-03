@@ -168,9 +168,9 @@
                           </Group>
                       </Group>
                   </Group>
-                  <Component id="photo" alignment="1" min="-2" pref="139" max="-2" attributes="0"/>
+                  <Component id="photo" alignment="0" min="-2" pref="160" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="396" max="32767" attributes="0"/>
+              <EmptySpace pref="375" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

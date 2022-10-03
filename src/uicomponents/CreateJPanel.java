@@ -6,6 +6,7 @@ package uicomponents;
 
 import java.awt.Image;
 import java.io.File;
+import java.util.regex.Pattern;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -23,6 +24,7 @@ public class CreateJPanel extends javax.swing.JPanel {
      * Creates new form CreateJPanel
      */
     EmployeeHistory history;
+
     public CreateJPanel(EmployeeHistory history) {
         initComponents();
         this.history = history;
@@ -93,9 +95,21 @@ public class CreateJPanel extends javax.swing.JPanel {
             }
         });
 
+        startDate.setText("DD-MM-YYYY");
+        startDate.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                startDateFocusLost(evt);
+            }
+        });
         startDate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 startDateActionPerformed(evt);
+            }
+        });
+
+        phoneNo.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                phoneNoFocusLost(evt);
             }
         });
 
@@ -185,7 +199,7 @@ public class CreateJPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(Title)
                 .addGap(44, 44, 44)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -230,10 +244,10 @@ public class CreateJPanel extends javax.swing.JPanel {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(EmailLbl))))
-                    .addComponent(uploadPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(uploadPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addComponent(displayPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
+                .addGap(11, 11, 11)
                 .addComponent(CreateEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(149, Short.MAX_VALUE))
         );
@@ -263,13 +277,13 @@ public class CreateJPanel extends javax.swing.JPanel {
                 isDataValidated = false;
             }
         }
-        
+
         if (isDataValidated) {
             String name = empName.getText();
             String id = empId.getText();
             int ageOfEmp = Integer.parseInt(age.getText());
             String genderEmp = (String) dropdown.getSelectedItem();
-            String startingDate = startDate.getText();         
+            String startingDate = startDate.getText();
             String lev = level.getText();
             String teamInformation = teamInfo.getText();
             String pos = position.getText();
@@ -293,11 +307,11 @@ public class CreateJPanel extends javax.swing.JPanel {
 
             JOptionPane.showMessageDialog(this, "Employee Details are saved!");
         }
-        
+
         empName.setText("");
         empId.setText("");
         age.setText("");
-        startDate.setText("");
+        startDate.setText("DD-MM-YYYY");
         level.setText("");
         teamInfo.setText("");
         position.setText("");
@@ -305,7 +319,7 @@ public class CreateJPanel extends javax.swing.JPanel {
         email.setText("");
         uploadPhoto.setIcon(null);
         dropdown.setSelectedIndex(0);
-                
+
     }//GEN-LAST:event_CreateEmployeeActionPerformed
 
     private void displayPhotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_displayPhotoActionPerformed
@@ -329,10 +343,41 @@ public class CreateJPanel extends javax.swing.JPanel {
 
     private void dropdownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dropdownActionPerformed
         // TODO add your handling code here:
-        if(evt.getSource()==dropdown){
+        if (evt.getSource() == dropdown) {
             dropdown.getSelectedItem();
         }
     }//GEN-LAST:event_dropdownActionPerformed
+
+    private void startDateFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_startDateFocusLost
+
+        // TODO add your handling code here:
+        String startDateText = startDate.getText();
+
+        if (startDateText.length() > 0) {
+            String regexPattern = "^\\d{2}-\\d{2}-\\d{4}$";
+            Boolean datePattern;
+            datePattern = Pattern.compile(regexPattern).matcher(startDateText).matches();
+            if (!datePattern) {
+                warningMessage("Please enter in DD-MM-YYY format");
+                startDate.setText("DD-MM-YYY");
+            }
+        }
+    }//GEN-LAST:event_startDateFocusLost
+
+    private void phoneNoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_phoneNoFocusLost
+        String phoneNumText = phoneNo.getText();
+
+        if (phoneNumText.length() > 0) {
+
+            if (phoneNumText.length() > 11 || phoneNumText.length() < 10) {
+                warningMessage("Please enter 10/11 digit phone number");
+                phoneNo.setText("");
+            } else if (!phoneNumText.chars().allMatch(Character::isDigit)) {
+                warningMessage("Mobile number can have digits only");
+                phoneNo.setText("");
+            }
+        }
+    }//GEN-LAST:event_phoneNoFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -361,5 +406,11 @@ public class CreateJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField teamInfo;
     private javax.swing.JLabel uploadPhoto;
     // End of variables declaration//GEN-END:variables
+
+    private void warningMessage(String mobile_number_can_have_digits_only) {
+            throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+
 
 }
