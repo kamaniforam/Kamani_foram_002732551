@@ -6,9 +6,6 @@ package uicomponents;
 
 import java.awt.Image;
 import java.io.File;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -247,12 +244,6 @@ public class CreateJPanel extends javax.swing.JPanel {
                 isDataValidated = false;
             }
         }
-        if (!startDate.getText().isEmpty()) {
-            if (startDate.getText().length() != 8) {
-                JOptionPane.showMessageDialog(this, "Invalid Start Date");
-                isDataValidated = false;
-            }
-        }
         String sc = " ,!#$%^&*()<+>=-_;:'";
         if (!email.getText().isEmpty()) {
             if ((!email.getText().endsWith("@gmail.com")) || ((email.getText().startsWith(sc)) || (email.getText().contains(sc)))) {
@@ -262,12 +253,10 @@ public class CreateJPanel extends javax.swing.JPanel {
         }
         
         if (isDataValidated) {
-           DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd");
             String name = empName.getText();
             String id = empId.getText();
             int ageOfEmp = Integer.parseInt(age.getText());
             String genderEmp = (String) dropdown.getSelectedItem();
-            System.out.print(genderEmp);
             String startingDate = startDate.getText();         
             String lev = level.getText();
             String teamInformation = teamInfo.getText();
@@ -292,6 +281,19 @@ public class CreateJPanel extends javax.swing.JPanel {
 
             JOptionPane.showMessageDialog(this, "Employee Details are saved!");
         }
+        
+        empName.setText("");
+        empId.setText("");
+        age.setText("");
+        startDate.setText("");
+        level.setText("");
+        teamInfo.setText("");
+        position.setText("");
+        phoneNo.setText("");
+        email.setText("");
+        uploadPhoto.setIcon(null);
+        dropdown.setSelectedIndex(0);
+                
     }//GEN-LAST:event_CreateEmployeeActionPerformed
 
     private void displayPhotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_displayPhotoActionPerformed
