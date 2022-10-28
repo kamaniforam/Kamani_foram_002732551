@@ -4,8 +4,9 @@
  */
 package uiComponents;
 
-import javax.swing.JFrame;
-import model.PatientHistory;
+import java.util.HashMap;
+import javax.swing.JOptionPane;
+import model.UserDetails;
 
 /**
  *
@@ -16,13 +17,10 @@ public class LoginJFrame extends javax.swing.JFrame {
     /**
      * Creates new form LoginJFrame
      */
-    PatientHistory history;
-    JFrame frame;
+    UserDetails users;
+
     public LoginJFrame() {
         initComponents();
-        this.setExtendedState(MAXIMIZED_BOTH);
-        history= new PatientHistory();
-        frame = new JFrame();
     }
 
     /**
@@ -34,26 +32,26 @@ public class LoginJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        loginLabel = new javax.swing.JLabel();
-        userName = new javax.swing.JLabel();
-        password = new javax.swing.JLabel();
-        roleLabel = new javax.swing.JLabel();
+        username = new javax.swing.JTextField();
+        password = new javax.swing.JTextField();
+        role = new javax.swing.JLabel();
+        dropdownRole = new javax.swing.JComboBox<>();
         loginBtn = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        accountLabel = new javax.swing.JLabel();
-        signInBtn = new javax.swing.JButton();
+        loginLbl = new javax.swing.JLabel();
+        usernameLbl = new javax.swing.JLabel();
+        passwordLbl = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        loginLabel.setText("LOGIN");
+        username.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                usernameActionPerformed(evt);
+            }
+        });
 
-        userName.setText("UserName:");
+        role.setText("Role:");
 
-        password.setText("Password:");
-
-        roleLabel.setText("Role:");
+        dropdownRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "System administrator", "patient", "hospital administrator", "community administrator", "Doctor" }));
 
         loginBtn.setText("Login");
         loginBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -62,16 +60,12 @@ public class LoginJFrame extends javax.swing.JFrame {
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "System Administrator", "Patient", "Hospital Administrator", "Community Administrator" }));
+        loginLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        loginLbl.setText("LOGIN");
 
-        accountLabel.setText("Don't have an account?");
+        usernameLbl.setText("User Name:");
 
-        signInBtn.setText("Sign In");
-        signInBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                signInBtnActionPerformed(evt);
-            }
-        });
+        passwordLbl.setText("Password:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -80,68 +74,72 @@ public class LoginJFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(143, 143, 143)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(password)
-                            .addComponent(userName)
-                            .addComponent(roleLabel))
-                        .addGap(53, 53, 53)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jTextField2)
-                                .addComponent(jTextField1)
-                                .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(loginLabel)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(181, 181, 181)
+                        .addGap(156, 156, 156)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(accountLabel)
-                            .addComponent(loginBtn))
-                        .addGap(18, 18, 18)
-                        .addComponent(signInBtn)))
-                .addContainerGap(557, Short.MAX_VALUE))
+                            .addComponent(usernameLbl)
+                            .addComponent(role, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(passwordLbl, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addGap(43, 43, 43)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(username)
+                            .addComponent(password)
+                            .addComponent(dropdownRole, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(222, 222, 222)
+                        .addComponent(loginBtn))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(211, 211, 211)
+                        .addComponent(loginLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(138, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(loginLabel)
-                .addGap(41, 41, 41)
+                .addGap(29, 29, 29)
+                .addComponent(loginLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(usernameLbl)
+                    .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(userName))
-                .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(password)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
+                    .addComponent(passwordLbl)
+                    .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(roleLabel)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(48, 48, 48)
-                .addComponent(loginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(accountLabel)
-                    .addComponent(signInBtn))
-                .addContainerGap(633, Short.MAX_VALUE))
+                    .addComponent(role, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dropdownRole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(51, 51, 51)
+                .addComponent(loginBtn)
+                .addContainerGap(83, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_usernameActionPerformed
+
     private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
         // TODO add your handling code here:
-        
-       
-    }//GEN-LAST:event_loginBtnActionPerformed
 
-    private void signInBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signInBtnActionPerformed
-        // TODO add your handling code here:
-        this.dispose();
-        SignInJFrame signIn = new SignInJFrame();
-        signIn.setVisible(true);
-    }//GEN-LAST:event_signInBtnActionPerformed
+        String userName = username.getText();
+        String pass = password.getText();
+
+        HashMap<String, String> loginInfo = new HashMap<>();
+
+        loginInfo.put("foram", "password");
+        loginInfo.put("systemddmin", "password");
+        loginInfo.put("communityAdmin", "password");
+
+        if (loginInfo.containsKey(userName) && loginInfo.containsKey(pass)) {
+
+        } else {
+            JOptionPane.showMessageDialog(this, "Login Successful!");
+        }
+
+    }//GEN-LAST:event_loginBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -179,15 +177,13 @@ public class LoginJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel accountLabel;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JComboBox<String> dropdownRole;
     private javax.swing.JButton loginBtn;
-    private javax.swing.JLabel loginLabel;
-    private javax.swing.JLabel password;
-    private javax.swing.JLabel roleLabel;
-    private javax.swing.JButton signInBtn;
-    private javax.swing.JLabel userName;
+    private javax.swing.JLabel loginLbl;
+    private javax.swing.JTextField password;
+    private javax.swing.JLabel passwordLbl;
+    private javax.swing.JLabel role;
+    private javax.swing.JTextField username;
+    private javax.swing.JLabel usernameLbl;
     // End of variables declaration//GEN-END:variables
 }

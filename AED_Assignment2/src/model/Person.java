@@ -1,72 +1,55 @@
 /*
-* To change this license header, choose License Headers in Project Properties.
-* To change this template file, choose Tools | Templates
-* and open the template in the editor.
-*/
-
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package model;
-
 /**
+ *
+ * @author foram
  */
 public class Person {
-    private String personName;
-    private int age;
-    private Patient patient;
-    private int personHouseNo;
-    private String personCommunity;
-    private String personCity;
-
-    public int getPersonhouse() {
-        return personHouseNo;
-    }
-
-    public void setPersonhouse(int personhouse) {
-        this.personHouseNo = personhouse;
+    private String nameOfPerson;
+    private int ageOfPerson;
+    private String idOfPerson;
+    House house;
+    
+    public Person(String name, int age, String id, House house){
+        this.nameOfPerson = name;
+        this.ageOfPerson = age;
+        this.idOfPerson = id;
+        this.house = house;
     }
 
-    public String getPersoncommunity() {
-        return personCommunity;
+    public String getNameOfPerson() {
+        return nameOfPerson;
     }
 
-    public void setPersoncommunity(String personcommunity) {
-        this.personCommunity = personcommunity;
+    public void setNameOfPerson(String nameOfPerson) {
+        this.nameOfPerson = nameOfPerson;
     }
 
-    public String getPersoncity() {
-        return personCity;
+    public String getIdOfPerson() {
+        return idOfPerson;
     }
 
-    public void setPersoncity(String personcity) {
-        this.personCity = personcity;
+    public void setIdOfPerson(String idOfPerson) {
+        this.idOfPerson = idOfPerson;
+    }
+
+    public int getAgeOfPerson() {
+        return ageOfPerson;
+    }
+
+    public void setAgeOfPerson(int ageOfPerson) {
+        this.ageOfPerson = ageOfPerson;
+    }
+
+    public House getHouse() {
+        return house;
+    }
+
+    public void setHouse(House house) {
+        this.house = house;
     }
     
-    public String getPersonName() {
-        return personName;
-    }
-    
-    public void setPersonName(String personName) {
-        this.personName = personName;
-    }
-    
-    public int getAge() {
-        return age;
-    }
-    
-    public void setAge(int age) {
-        this.age = age;
-    }
-    
-    public Patient getPatient() {
-        return patient;
-    }
-    
-    public void setPatient(Patient patient) {
-        this.patient = patient;
-    }
-    
-    @Override
-    public String toString()
-    {
-        return this.personName;
-    }
 }

@@ -1,99 +1,62 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package model;
 
 /**
  *
+ * @author foram
  */
-public class Patient {
-    
-    private String patientID;
-    private String primaryDoctorName;
-    private String city;
-    private VitalSignHistory vitalSignHistory;
-    private int age;
-    private Patient patient;
-    private String personhouse;
-    private String personcommunity;
+public class Patient extends Person {
 
-    public String getCity() {
-        return city;
+    private VitalSigns vitalSigns;
+    private String patientD;
+    private boolean isStable;
+
+    public Patient(String name, int age, String id, House house, VitalSigns vitalSigns, String patientID, boolean isStable) {
+        super(name, age, id, house);
+        this.vitalSigns = vitalSigns;
+        this.patientD = patientID;
+        this.isStable = isStable;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public VitalSigns getVitalSigns() {
+        return vitalSigns;
     }
 
-    public int getAge() {
-        return age;
+    public void setVitalSigns(VitalSigns vitalSigns) {
+        this.vitalSigns = vitalSigns;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public String getPatientD() {
+        return patientD;
     }
 
-    public Patient getPatient() {
-        return patient;
+    public void setPatientD(String patientD) {
+        this.patientD = patientD;
     }
 
-    public void setPatient(Patient patient) {
-        this.patient = patient;
+    public boolean isIsStable() {
+        return isStable;
     }
 
-    public String getPersonhouse() {
-        return personhouse;
+    public void setIsStable(boolean isStable) {
+        this.isStable = isStable;
     }
 
-    public void setPersonhouse(String personhouse) {
-        this.personhouse = personhouse;
-    }
+    public boolean isPatientNormal(int age) {
+        boolean isPatientNormal = true;
 
-    public String getPersoncommunity() {
-        return personcommunity;
-    }
-
-    public void setPersoncommunity(String personcommunity) {
-        this.personcommunity = personcommunity;
-    }
-    
-    
-    public Patient() {
-        this.vitalSignHistory = new VitalSignHistory();
-    }
-    
-    public String getPatientID() {
-        return patientID;
-    }
-    
-    public void setPatientID(String patientID) {
-        this.patientID = patientID;
-    }
-    
-    public String getPrimaryDoctorName() {
-        return primaryDoctorName;
-    }
-    
-    public void setPrimaryDoctorName(String primaryDoctorName) {
-        this.primaryDoctorName = primaryDoctorName;
-    }
-    
-    public String getcity() {
-        return city;
-    }
-    
-    public void setcity(String prefferedPharmacy) {
-        this.city = city;
-    }
-    
-    public VitalSignHistory getVitalSignHistory() {
-        return vitalSignHistory;
-    }
-    
-    public void setVitalSignHistory(VitalSignHistory vitalSignHistory) {
-        this.vitalSignHistory = vitalSignHistory;
-    }
-    
-    @Override
-    public String toString()
-    {
-        return String.valueOf(this.patientID);
+        if (age < 50) {
+            if (vitalSigns.getBloodPressure() < 80 || vitalSigns.getBloodPressure() > 120) {
+                isPatientNormal = false;
+            }
+        } else {
+            if (vitalSigns.getBloodPressure() < 75 || vitalSigns.getBloodPressure() > 125) {
+                isPatientNormal = false;
+            }
+        }
+        return isPatientNormal;
     }
 }

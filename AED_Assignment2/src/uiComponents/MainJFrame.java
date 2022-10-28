@@ -3,11 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package uiComponents;
-
-import java.awt.CardLayout;
-import javax.swing.JPanel;
-import model.PatientHistory;
-
+import model.DoctorDirectory;
+import model.PersonDirectory;
+import model.PatientDirectory;
+import model.EncounterHistory;
 /**
  *
  * @author foram
@@ -17,13 +16,18 @@ public class MainJFrame extends javax.swing.JFrame {
     /**
      * Creates new form MainJFrame
      */
-    PatientHistory history;
-    JPanel panel;
+    PatientDirectory patientDirectory;
+    PersonDirectory personDirectory;
+    EncounterHistory encounterHistory;
+    DoctorDirectory doctorDirectory;
+    
     public MainJFrame() {
         initComponents();
-        this.setExtendedState(MAXIMIZED_BOTH);
-        history= new PatientHistory();
-        panel = new JPanel();
+        
+        personDirectory = new PersonDirectory();
+        patientDirectory = new PatientDirectory();
+        encounterHistory = new EncounterHistory();
+        doctorDirectory = new DoctorDirectory();
     }
 
     /**
@@ -35,36 +39,51 @@ public class MainJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        splitPane = new javax.swing.JSplitPane();
+        jSplitPane1 = new javax.swing.JSplitPane();
         leftPanel = new javax.swing.JPanel();
-        managePeople = new javax.swing.JButton();
-        hospitals = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        login = new javax.swing.JButton();
+        btnCreate = new javax.swing.JButton();
+        btnView = new javax.swing.JButton();
+        btnSearch = new javax.swing.JButton();
+        btnSearch1 = new javax.swing.JButton();
+        loginBtn = new javax.swing.JButton();
         rightPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        managePeople.setText("Manage People");
-        managePeople.addActionListener(new java.awt.event.ActionListener() {
+        leftPanel.setBackground(new java.awt.Color(153, 153, 255));
+
+        btnCreate.setText("CREATE");
+        btnCreate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                managePeopleActionPerformed(evt);
+                btnCreateActionPerformed(evt);
             }
         });
 
-        hospitals.setText("Near Hospitals");
-        hospitals.addActionListener(new java.awt.event.ActionListener() {
+        btnView.setText("VIEW");
+        btnView.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                hospitalsActionPerformed(evt);
+                btnViewActionPerformed(evt);
             }
         });
 
-        jButton3.setText("jButton2");
-
-        login.setText("Login");
-        login.addActionListener(new java.awt.event.ActionListener() {
+        btnSearch.setText("SEARCH");
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                loginActionPerformed(evt);
+                btnSearchActionPerformed(evt);
+            }
+        });
+
+        btnSearch1.setText("SYSTEM ADMIN");
+        btnSearch1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearch1ActionPerformed(evt);
+            }
+        });
+
+        loginBtn.setText("LOGIN");
+        loginBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginBtnActionPerformed(evt);
             }
         });
 
@@ -75,78 +94,95 @@ public class MainJFrame extends javax.swing.JFrame {
             .addGroup(leftPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(login, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnSearch1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(leftPanelLayout.createSequentialGroup()
-                        .addComponent(managePeople, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(hospitals, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                        .addGroup(leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnCreate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(loginBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         leftPanelLayout.setVerticalGroup(
             leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(leftPanelLayout.createSequentialGroup()
-                .addGap(67, 67, 67)
-                .addComponent(managePeople, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(77, 77, 77)
-                .addComponent(hospitals, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(77, 77, 77)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(73, 73, 73)
-                .addComponent(login, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(73, Short.MAX_VALUE))
+                .addGap(44, 44, 44)
+                .addComponent(btnCreate)
+                .addGap(18, 18, 18)
+                .addComponent(btnView)
+                .addGap(18, 18, 18)
+                .addComponent(btnSearch)
+                .addGap(18, 18, 18)
+                .addComponent(btnSearch1)
+                .addGap(18, 18, 18)
+                .addComponent(loginBtn)
+                .addContainerGap(233, Short.MAX_VALUE))
         );
 
-        splitPane.setLeftComponent(leftPanel);
+        jSplitPane1.setLeftComponent(leftPanel);
+
+        rightPanel.setBackground(new java.awt.Color(204, 204, 255));
 
         javax.swing.GroupLayout rightPanelLayout = new javax.swing.GroupLayout(rightPanel);
         rightPanel.setLayout(rightPanelLayout);
         rightPanelLayout.setHorizontalGroup(
             rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 797, Short.MAX_VALUE)
+            .addGap(0, 489, Short.MAX_VALUE)
         );
         rightPanelLayout.setVerticalGroup(
             rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 501, Short.MAX_VALUE)
+            .addGap(0, 464, Short.MAX_VALUE)
         );
 
-        splitPane.setRightComponent(rightPanel);
+        jSplitPane1.setRightComponent(rightPanel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(splitPane, javax.swing.GroupLayout.DEFAULT_SIZE, 988, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(splitPane, javax.swing.GroupLayout.PREFERRED_SIZE, 501, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(493, Short.MAX_VALUE))
+                .addComponent(jSplitPane1)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void managePeopleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_managePeopleActionPerformed
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         // TODO add your handling code here:
-       ManagePeopleJPanel viewPanel = new ManagePeopleJPanel(rightPanel, history);
-       splitPane.setRightComponent(viewPanel);   
-    }//GEN-LAST:event_managePeopleActionPerformed
+        SearchJPanel searchPane = new SearchJPanel(encounterHistory, patientDirectory);
+        jSplitPane1.setRightComponent(searchPane);
+    }//GEN-LAST:event_btnSearchActionPerformed
 
-    private void hospitalsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hospitalsActionPerformed
+    private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_hospitalsActionPerformed
+        CreateJPanel createPane = new CreateJPanel(personDirectory);
+        jSplitPane1.setRightComponent(createPane);
+    }//GEN-LAST:event_btnCreateActionPerformed
 
-    private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
+    private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
         // TODO add your handling code here:
-        LoginJFrame loginframe = new LoginJFrame();
-        loginframe.setVisible(true);
-    }//GEN-LAST:event_loginActionPerformed
+        ViewJPanel viewPane = new ViewJPanel(personDirectory, patientDirectory, encounterHistory);
+        jSplitPane1.setRightComponent(viewPane);
+    }//GEN-LAST:event_btnViewActionPerformed
+
+    private void btnSearch1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearch1ActionPerformed
+        // TODO add your handling code here:
+        //System.out.print(doctorDirectory.getListOfDoctors());
+        SystemAdminJPanel systemAdminPane = new SystemAdminJPanel(personDirectory,patientDirectory, encounterHistory, doctorDirectory);
+        jSplitPane1.setRightComponent(systemAdminPane);
+    }//GEN-LAST:event_btnSearch1ActionPerformed
+
+    private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
+        // TODO add your handling code here:
+        LoginJPanel login = new LoginJPanel(jSplitPane1);
+        jSplitPane1.setRightComponent(login);
+    }//GEN-LAST:event_loginBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -174,6 +210,7 @@ public class MainJFrame extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -184,12 +221,13 @@ public class MainJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton hospitals;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton btnCreate;
+    private javax.swing.JButton btnSearch;
+    private javax.swing.JButton btnSearch1;
+    private javax.swing.JButton btnView;
+    private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JPanel leftPanel;
-    private javax.swing.JButton login;
-    private javax.swing.JButton managePeople;
+    private javax.swing.JButton loginBtn;
     private javax.swing.JPanel rightPanel;
-    private javax.swing.JSplitPane splitPane;
     // End of variables declaration//GEN-END:variables
 }
