@@ -10,10 +10,10 @@ package model;
 public class Person {
     private String nameOfPerson;
     private int ageOfPerson;
-    private String idOfPerson;
+    private int idOfPerson;
     House house;
     
-    public Person(String name, int age, String id, House house){
+    public Person(String name, int age, int id, House house){
         this.nameOfPerson = name;
         this.ageOfPerson = age;
         this.idOfPerson = id;
@@ -28,11 +28,11 @@ public class Person {
         this.nameOfPerson = nameOfPerson;
     }
 
-    public String getIdOfPerson() {
+    public int getIdOfPerson() {
         return idOfPerson;
     }
 
-    public void setIdOfPerson(String idOfPerson) {
+    public void setIdOfPerson(int idOfPerson) {
         this.idOfPerson = idOfPerson;
     }
 

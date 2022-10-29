@@ -3,24 +3,38 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package uiComponents;
+
+import javax.swing.InputVerifier;
 import javax.swing.JOptionPane;
+import model.EncounterHistory;
 import model.House;
+import model.PatientDirectory;
 import model.Person;
 import model.PersonDirectory;
+import validations.VerifyNumber;
+import validations.VerifyString;
 
 /**
  *
  * @author foram
  */
 public class CreateJPanel extends javax.swing.JPanel {
+    private javax.swing.JSplitPane jSplitPane1;
 
     /**
      * Creates new form CreateJPanel
      */
     PersonDirectory personDirectory;
-    public CreateJPanel(PersonDirectory personDirectory) {
+    PatientDirectory patientDirectory;
+    EncounterHistory encounterHistory;
+
+    public CreateJPanel(PersonDirectory personDirectory, PatientDirectory patientDirectory, EncounterHistory encounterHistory, javax.swing.JSplitPane jSplitPane1) {
         initComponents();
         this.personDirectory = personDirectory;
+        this.patientDirectory = patientDirectory;
+        this.encounterHistory = encounterHistory;
+        this.jSplitPane1 = jSplitPane1;
+        addVerifiers();
     }
 
     /**
@@ -50,6 +64,7 @@ public class CreateJPanel extends javax.swing.JPanel {
         ddCommunity = new javax.swing.JComboBox<>();
         ddHouseNumber = new javax.swing.JComboBox<>();
         btnSave = new javax.swing.JButton();
+        viewPerson = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(204, 204, 255));
         setPreferredSize(new java.awt.Dimension(600, 600));
@@ -104,7 +119,7 @@ public class CreateJPanel extends javax.swing.JPanel {
             }
         });
 
-        ddCommunity.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose a Community", "Boylston", "Mission Main", "Mission Hill" }));
+        ddCommunity.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose a Community", "Boylston", "MissionMain", "MissionHill" }));
         ddCommunity.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ddCommunityActionPerformed(evt);
@@ -117,6 +132,13 @@ public class CreateJPanel extends javax.swing.JPanel {
         btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSaveActionPerformed(evt);
+            }
+        });
+
+        viewPerson.setText("View");
+        viewPerson.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewPersonActionPerformed(evt);
             }
         });
 
@@ -155,8 +177,11 @@ public class CreateJPanel extends javax.swing.JPanel {
                         .addGap(265, 265, 265)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
-                            .addComponent(btnSave))))
-                .addGap(0, 70, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnSave)
+                                .addGap(27, 27, 27)
+                                .addComponent(viewPerson)))))
+                .addGap(0, 150, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -188,8 +213,10 @@ public class CreateJPanel extends javax.swing.JPanel {
                     .addComponent(lblCity)
                     .addComponent(ddCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(97, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(viewPerson, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(101, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -211,32 +238,32 @@ public class CreateJPanel extends javax.swing.JPanel {
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
-        if(txtName.getText().isEmpty() || txtPersonID.getText().isEmpty() ||
-           txtAddress.getText().isEmpty() || txtAge.getText().isEmpty() ||
-           txtZipCode.getText().isEmpty() || ddCity.getSelectedItem() == null ||
-           ddCommunity.getSelectedItem() == null || ddHouseNumber.getSelectedItem() == null){
-           JOptionPane.showMessageDialog(null, "All fields are Mandatory");
-        }
-        else{
-            
+        if (txtName.getText().isEmpty() || txtPersonID.getText().isEmpty()
+                || txtAddress.getText().isEmpty() || txtAge.getText().isEmpty()
+                || txtZipCode.getText().isEmpty() || ddCity.getSelectedItem() == null
+                || ddCommunity.getSelectedItem() == null || ddHouseNumber.getSelectedItem() == null || ddCity.getSelectedIndex() == 0
+                || ddCommunity.getSelectedIndex() == 0 || ddHouseNumber.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(null, "All fields are Mandatory");
+        } else {
+
             Person person = personDirectory.addNewPerson();
             House house = new House();
-            
-            person.setIdOfPerson(txtPersonID.getText());
+
+            person.setIdOfPerson(Integer.parseInt(txtPersonID.getText()));
             person.setAgeOfPerson(Integer.parseInt(txtAge.getText()));
             person.setNameOfPerson(txtName.getText());
-            
+
             house.setStreetName(txtAddress.getText());
             house.setApartmentNumber(Integer.parseInt(ddHouseNumber.getSelectedItem().toString()));
             house.setNameOfCity(ddCity.getSelectedItem().toString());
             house.setNameOfCommunity(ddCommunity.getSelectedItem().toString());
             house.setZipCode(Integer.parseInt(txtZipCode.getText()));
-            
+
             person.setHouse(house);
             JOptionPane.showMessageDialog(this, "Profile Saved");
-           
+
         }
-        
+
         txtPersonID.setText("");
         txtAge.setText("");
         txtName.setText("");
@@ -245,7 +272,7 @@ public class CreateJPanel extends javax.swing.JPanel {
         ddHouseNumber.setSelectedIndex(0);
         ddCity.setSelectedIndex(0);
         ddCommunity.setSelectedIndex(0);
-        
+
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void txtZipCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtZipCodeActionPerformed
@@ -255,6 +282,12 @@ public class CreateJPanel extends javax.swing.JPanel {
     private void ddCommunityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ddCommunityActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ddCommunityActionPerformed
+
+    private void viewPersonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewPersonActionPerformed
+        // TODO add your handling code here:
+        ViewJPanel viewPane = new ViewJPanel(personDirectory, patientDirectory, encounterHistory,jSplitPane1);
+        jSplitPane1.setRightComponent(viewPane);
+    }//GEN-LAST:event_viewPersonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -276,5 +309,16 @@ public class CreateJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtPersonID;
     private javax.swing.JTextField txtZipCode;
+    private javax.swing.JButton viewPerson;
     // End of variables declaration//GEN-END:variables
+
+    private void addVerifiers() {
+        InputVerifier integerVerifier = new VerifyNumber();
+        txtPersonID.setInputVerifier(integerVerifier);
+        txtAge.setInputVerifier(integerVerifier);
+        txtZipCode.setInputVerifier(integerVerifier);
+        InputVerifier stringVerifier = new VerifyString();
+        txtName.setInputVerifier(stringVerifier);
+        txtAddress.setInputVerifier(stringVerifier);
+    }
 }

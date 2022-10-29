@@ -19,18 +19,19 @@ import model.VitalSigns;
  * @author foram
  */
 public class ViewJPanel extends javax.swing.JPanel {
-
+    private javax.swing.JSplitPane jSplitPane1;;
     /**
      * Creates new form ViewJPanel
      */
     PersonDirectory personDirectory;
     PatientDirectory patientDirectory;
     EncounterHistory encounterHistory;
-    public ViewJPanel(PersonDirectory personDirectory, PatientDirectory patientDirectory, EncounterHistory encounterHistory) {
+    public ViewJPanel(PersonDirectory personDirectory, PatientDirectory patientDirectory, EncounterHistory encounterHistory, javax.swing.JSplitPane jSplitPane1) {
         initComponents();
         this.personDirectory = personDirectory;
         this.patientDirectory = patientDirectory;
         this.encounterHistory = encounterHistory;
+        this.jSplitPane1 = jSplitPane1;
         displayPersonTableDetails();
         displayPatientTableDetails();
     }
@@ -71,6 +72,8 @@ public class ViewJPanel extends javax.swing.JPanel {
         lblBloodPressure = new javax.swing.JLabel();
         txtBloodPressure = new javax.swing.JTextField();
         btnCheck = new javax.swing.JButton();
+        btnSearch = new javax.swing.JButton();
+        btnSave = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(204, 204, 255));
         setPreferredSize(new java.awt.Dimension(600, 600));
@@ -197,6 +200,20 @@ public class ViewJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnSearch.setText("SEARCH");
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchActionPerformed(evt);
+            }
+        });
+
+        btnSave.setText("Back");
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -206,7 +223,7 @@ public class ViewJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1092, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblPersonID)
@@ -254,13 +271,20 @@ public class ViewJPanel extends javax.swing.JPanel {
                                 .addGap(30, 30, 30)
                                 .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(371, 371, 371)
-                        .addComponent(jLabel1)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(371, 371, 371)
+                                .addComponent(jLabel1))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(403, 403, 403)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(403, 403, 403)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(278, 278, 278)
+                .addComponent(btnSave)
+                .addGap(33, 33, 33)
+                .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -306,14 +330,17 @@ public class ViewJPanel extends javax.swing.JPanel {
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(71, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
         int selectedRowIndex = tblPerson.getSelectedRow();
-        DefaultTableModel model = (DefaultTableModel) tblPerson.getModel();
         Person selectPerson = personDirectory.getListOfPerson().get(selectedRowIndex);
         
         personDirectory.deletePerson(selectPerson);
@@ -345,12 +372,12 @@ public class ViewJPanel extends javax.swing.JPanel {
         vitalSigns.setBloodPressure(bloodPressure);
         House housing = new House();
        
-        Patient patient = new Patient("", 0, "", housing, vitalSigns, "", false);
+        Patient patient = new Patient("", 0, 0, housing, vitalSigns, "", false);
         boolean isStable = patient.isPatientNormal(selectPerson.getAgeOfPerson());
         
         if(isStable == false){
               patientDirectory.addPatient(patient);
-              patient.setPatientD(selectPerson.getIdOfPerson());
+              patient.setPatientD(String.valueOf(selectPerson.getIdOfPerson()));
               patient.setNameOfPerson(selectPerson.getNameOfPerson());
               patient.setAgeOfPerson(selectPerson.getAgeOfPerson());
               patient.setHouse(selectPerson.getHouse());
@@ -371,10 +398,9 @@ public class ViewJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         int selectedRowIndex = tblPerson.getSelectedRow();
         
-        DefaultTableModel model = (DefaultTableModel) tblPerson.getModel();
         Person selectPerson = personDirectory.getListOfPerson().get(selectedRowIndex);
         
-        txtPersonID.setText(selectPerson.getIdOfPerson());
+        txtPersonID.setText(String.valueOf(selectPerson.getIdOfPerson()));
         txtAge.setText(String.valueOf(selectPerson.getAgeOfPerson()));
         txtName.setText(selectPerson.getNameOfPerson());
         txtAddress.setText(selectPerson.getHouse().getStreetName());
@@ -399,10 +425,6 @@ public class ViewJPanel extends javax.swing.JPanel {
         model.setValueAt(txtZipCode.getText(), selectedRowIndex, 7);
     }//GEN-LAST:event_btnUpdateActionPerformed
 
-    private void ddHouseNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ddHouseNumberActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ddHouseNumberActionPerformed
-
     private void txtZipCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtZipCodeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtZipCodeActionPerformed
@@ -411,10 +433,28 @@ public class ViewJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtBloodPressureActionPerformed
 
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        // TODO add your handling code here:
+        SearchJPanel searchPane = new SearchJPanel(encounterHistory, patientDirectory);
+        jSplitPane1.setRightComponent(searchPane);
+    }//GEN-LAST:event_btnSearchActionPerformed
+
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        // TODO add your handling code here:
+        CreateJPanel createPane = new CreateJPanel(personDirectory, patientDirectory, encounterHistory, jSplitPane1);
+        jSplitPane1.setRightComponent(createPane);
+    }//GEN-LAST:event_btnSaveActionPerformed
+
+    private void ddHouseNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ddHouseNumberActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ddHouseNumberActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCheck;
     private javax.swing.JButton btnDelete;
+    private javax.swing.JButton btnSave;
+    private javax.swing.JButton btnSearch;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JComboBox<String> ddCity;
     private javax.swing.JComboBox<String> ddCommunity;
@@ -455,6 +495,7 @@ public class ViewJPanel extends javax.swing.JPanel {
             row[5] = person.getHouse().getApartmentNumber();
             row[6] = person.getHouse().getStreetName();
             row[7] = person.getHouse().getZipCode();
+            
             tblmodel.addRow(row);
         }
     }

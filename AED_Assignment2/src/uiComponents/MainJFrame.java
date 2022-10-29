@@ -7,12 +7,13 @@ import model.DoctorDirectory;
 import model.PersonDirectory;
 import model.PatientDirectory;
 import model.EncounterHistory;
+import model.HospitalDirectory;
 /**
  *
  * @author foram
  */
 public class MainJFrame extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form MainJFrame
      */
@@ -20,6 +21,7 @@ public class MainJFrame extends javax.swing.JFrame {
     PersonDirectory personDirectory;
     EncounterHistory encounterHistory;
     DoctorDirectory doctorDirectory;
+    HospitalDirectory hospitalDirectory;
     
     public MainJFrame() {
         initComponents();
@@ -28,6 +30,7 @@ public class MainJFrame extends javax.swing.JFrame {
         patientDirectory = new PatientDirectory();
         encounterHistory = new EncounterHistory();
         doctorDirectory = new DoctorDirectory();
+        hospitalDirectory = new HospitalDirectory();
     }
 
     /**
@@ -41,44 +44,12 @@ public class MainJFrame extends javax.swing.JFrame {
 
         jSplitPane1 = new javax.swing.JSplitPane();
         leftPanel = new javax.swing.JPanel();
-        btnCreate = new javax.swing.JButton();
-        btnView = new javax.swing.JButton();
-        btnSearch = new javax.swing.JButton();
-        btnSearch1 = new javax.swing.JButton();
         loginBtn = new javax.swing.JButton();
         rightPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         leftPanel.setBackground(new java.awt.Color(153, 153, 255));
-
-        btnCreate.setText("CREATE");
-        btnCreate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCreateActionPerformed(evt);
-            }
-        });
-
-        btnView.setText("VIEW");
-        btnView.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnViewActionPerformed(evt);
-            }
-        });
-
-        btnSearch.setText("SEARCH");
-        btnSearch.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSearchActionPerformed(evt);
-            }
-        });
-
-        btnSearch1.setText("SYSTEM ADMIN");
-        btnSearch1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSearch1ActionPerformed(evt);
-            }
-        });
 
         loginBtn.setText("LOGIN");
         loginBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -93,28 +64,12 @@ public class MainJFrame extends javax.swing.JFrame {
             leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(leftPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnSearch1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(leftPanelLayout.createSequentialGroup()
-                        .addGroup(leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnCreate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(loginBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addComponent(loginBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE))
         );
         leftPanelLayout.setVerticalGroup(
             leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(leftPanelLayout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addComponent(btnCreate)
-                .addGap(18, 18, 18)
-                .addComponent(btnView)
-                .addGap(18, 18, 18)
-                .addComponent(btnSearch)
-                .addGap(18, 18, 18)
-                .addComponent(btnSearch1)
-                .addGap(18, 18, 18)
+                .addGap(208, 208, 208)
                 .addComponent(loginBtn)
                 .addContainerGap(233, Short.MAX_VALUE))
         );
@@ -152,31 +107,6 @@ public class MainJFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-        // TODO add your handling code here:
-        SearchJPanel searchPane = new SearchJPanel(encounterHistory, patientDirectory);
-        jSplitPane1.setRightComponent(searchPane);
-    }//GEN-LAST:event_btnSearchActionPerformed
-
-    private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
-        // TODO add your handling code here:
-        CreateJPanel createPane = new CreateJPanel(personDirectory);
-        jSplitPane1.setRightComponent(createPane);
-    }//GEN-LAST:event_btnCreateActionPerformed
-
-    private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
-        // TODO add your handling code here:
-        ViewJPanel viewPane = new ViewJPanel(personDirectory, patientDirectory, encounterHistory);
-        jSplitPane1.setRightComponent(viewPane);
-    }//GEN-LAST:event_btnViewActionPerformed
-
-    private void btnSearch1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearch1ActionPerformed
-        // TODO add your handling code here:
-        //System.out.print(doctorDirectory.getListOfDoctors());
-        SystemAdminJPanel systemAdminPane = new SystemAdminJPanel(personDirectory,patientDirectory, encounterHistory, doctorDirectory);
-        jSplitPane1.setRightComponent(systemAdminPane);
-    }//GEN-LAST:event_btnSearch1ActionPerformed
 
     private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
         // TODO add your handling code here:
@@ -221,10 +151,6 @@ public class MainJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCreate;
-    private javax.swing.JButton btnSearch;
-    private javax.swing.JButton btnSearch1;
-    private javax.swing.JButton btnView;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JPanel leftPanel;
     private javax.swing.JButton loginBtn;

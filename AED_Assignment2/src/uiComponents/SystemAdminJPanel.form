@@ -71,15 +71,15 @@
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="342" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="371" max="-2" attributes="0"/>
                               <Component id="systemAdminLbl" min="-2" pref="132" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="122" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Component id="jTabbedPane1" min="-2" pref="856" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="34" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -115,9 +115,9 @@
                           <EmptySpace min="0" pref="856" max="32767" attributes="0"/>
                           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="60" max="32767" attributes="0"/>
                                   <Component id="doctorPanel1" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="61" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -144,17 +144,15 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jScrollPane4" alignment="0" min="-2" pref="556" max="-2" attributes="0"/>
-                                      <Group type="102" alignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Component id="jScrollPane4" min="-2" pref="625" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Group type="102" alignment="0" attributes="0">
                                                   <EmptySpace min="-2" pref="196" max="-2" attributes="0"/>
                                                   <Component id="hospitalPortalLbl" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="create2" min="-2" pref="116" max="-2" attributes="0"/>
-                                                  <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                                                  <Component id="read2" min="-2" pref="116" max="-2" attributes="0"/>
                                               </Group>
                                               <Group type="102" alignment="0" attributes="0">
                                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -163,33 +161,41 @@
                                                   </Group>
                                                   <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
                                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                      <Component id="hospitalName" pref="107" max="32767" attributes="0"/>
+                                                      <Component id="hospitalDropdown1" max="32767" attributes="0"/>
                                                       <Component id="hospitalid" max="32767" attributes="0"/>
                                                   </Group>
                                               </Group>
-                                          </Group>
-                                          <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                               <Group type="102" alignment="0" attributes="0">
+                                                  <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
+                                                  <Component id="create2" min="-2" pref="116" max="-2" attributes="0"/>
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <Component id="update2" min="-2" pref="116" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="102" attributes="0">
+                                                  <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                                                   <Group type="103" groupAlignment="0" attributes="0">
                                                       <Component id="hospitalLbl1" alignment="0" min="-2" max="-2" attributes="0"/>
                                                       <Component id="cityLbl" alignment="0" min="-2" max="-2" attributes="0"/>
                                                   </Group>
                                                   <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
                                                   <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="communityDropdown" max="32767" attributes="0"/>
-                                                      <Component id="citydropdown" max="32767" attributes="0"/>
+                                                      <Component id="ddCommunity1" pref="167" max="32767" attributes="0"/>
+                                                      <Component id="ddCity1" max="32767" attributes="0"/>
                                                   </Group>
+                                                  <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                                               </Group>
                                               <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="update2" min="-2" pref="116" max="-2" attributes="0"/>
                                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                                   <Component id="delete2" min="-2" pref="116" max="-2" attributes="0"/>
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <Component id="clear2" min="-2" pref="95" max="-2" attributes="0"/>
+                                                  <EmptySpace max="32767" attributes="0"/>
                                               </Group>
                                           </Group>
                                       </Group>
                                   </Group>
-                                  <EmptySpace pref="104" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -205,21 +211,21 @@
                                       <Component id="hospitalIdLbl" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="hospitalid" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="hospitalLbl1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="communityDropdown" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="ddCommunity1" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="hospitalDropdown1" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="HospitalnameLbl" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="hospitalName" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="cityLbl" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="citydropdown" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="ddCity1" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="create2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="read2" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="update2" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="delete2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="clear2" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace pref="188" max="32767" attributes="0"/>
                               </Group>
@@ -247,29 +253,6 @@
                             <Property name="text" type="java.lang.String" value="Hospital Name:"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JTextField" name="hospitalName">
-                          <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="hospitalNameActionPerformed"/>
-                          </Events>
-                        </Component>
-                        <Component class="javax.swing.JComboBox" name="communityDropdown">
-                          <Properties>
-                            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                              <StringArray count="4">
-                                <StringItem index="0" value="Hospital A"/>
-                                <StringItem index="1" value="Hospital B"/>
-                                <StringItem index="2" value="Hospital C"/>
-                                <StringItem index="3" value="Hospital D"/>
-                              </StringArray>
-                            </Property>
-                          </Properties>
-                          <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="communityDropdownActionPerformed"/>
-                          </Events>
-                          <AuxValues>
-                            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                          </AuxValues>
-                        </Component>
                         <Component class="javax.swing.JLabel" name="hospitalLbl1">
                           <Properties>
                             <Property name="text" type="java.lang.String" value="Community:"/>
@@ -280,32 +263,12 @@
                             <Property name="text" type="java.lang.String" value="City:"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JComboBox" name="citydropdown">
-                          <Properties>
-                            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                              <StringArray count="4">
-                                <StringItem index="0" value="Item 1"/>
-                                <StringItem index="1" value="Item 2"/>
-                                <StringItem index="2" value="Item 3"/>
-                                <StringItem index="3" value="Item 4"/>
-                              </StringArray>
-                            </Property>
-                          </Properties>
-                          <AuxValues>
-                            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                          </AuxValues>
-                        </Component>
                         <Component class="javax.swing.JButton" name="create2">
                           <Properties>
                             <Property name="text" type="java.lang.String" value="Create"/>
                           </Properties>
-                        </Component>
-                        <Component class="javax.swing.JButton" name="read2">
-                          <Properties>
-                            <Property name="text" type="java.lang.String" value="Read"/>
-                          </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="read2ActionPerformed"/>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="create2ActionPerformed"/>
                           </Events>
                         </Component>
                         <Component class="javax.swing.JButton" name="update2">
@@ -369,9 +332,75 @@
                                   <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                                 </Property>
                               </Properties>
+                              <Events>
+                                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="hospitalTableMouseClicked"/>
+                              </Events>
                             </Component>
                           </SubComponents>
                         </Container>
+                        <Component class="javax.swing.JComboBox" name="ddCity1">
+                          <Properties>
+                            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                              <StringArray count="4">
+                                <StringItem index="0" value="Choose a City"/>
+                                <StringItem index="1" value="Boston"/>
+                                <StringItem index="2" value="Newyork"/>
+                                <StringItem index="3" value="California"/>
+                              </StringArray>
+                            </Property>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ddCity1ActionPerformed"/>
+                          </Events>
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                          </AuxValues>
+                        </Component>
+                        <Component class="javax.swing.JComboBox" name="ddCommunity1">
+                          <Properties>
+                            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                              <StringArray count="4">
+                                <StringItem index="0" value="Choose a Community"/>
+                                <StringItem index="1" value="Boylston"/>
+                                <StringItem index="2" value="Mission Main"/>
+                                <StringItem index="3" value="Mission Hill"/>
+                              </StringArray>
+                            </Property>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ddCommunity1ActionPerformed"/>
+                          </Events>
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                          </AuxValues>
+                        </Component>
+                        <Component class="javax.swing.JComboBox" name="hospitalDropdown1">
+                          <Properties>
+                            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                              <StringArray count="5">
+                                <StringItem index="0" value="Choose Hospital"/>
+                                <StringItem index="1" value="Hospital A"/>
+                                <StringItem index="2" value="Hospital B"/>
+                                <StringItem index="3" value="Hospital C"/>
+                                <StringItem index="4" value="Hospital D"/>
+                              </StringArray>
+                            </Property>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="hospitalDropdown1ActionPerformed"/>
+                          </Events>
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                          </AuxValues>
+                        </Component>
+                        <Component class="javax.swing.JButton" name="clear2">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Clear"/>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="clear2ActionPerformed"/>
+                          </Events>
+                        </Component>
                       </SubComponents>
                     </Container>
                   </SubComponents>
@@ -470,37 +499,43 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jScrollPane5" max="32767" attributes="0"/>
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="doctorNameLbl" min="-2" max="-2" attributes="0"/>
-                                          <Component id="doctorIdLbl" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="hospitalLbl" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="createDoctorBtn" alignment="0" min="-2" pref="116" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="doctorNameLbl" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="doctorIdLbl" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="hospitalLbl" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="hospitalDropdown" min="-2" max="-2" attributes="0"/>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
+                                                      <Component id="addDocLbl" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                          </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Group type="102" alignment="1" attributes="0">
+                                                  <Group type="102" attributes="0">
+                                                      <EmptySpace min="-2" pref="169" max="-2" attributes="0"/>
                                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                                           <Component id="doctorName" pref="96" max="32767" attributes="0"/>
                                                           <Component id="doctorId" max="32767" attributes="0"/>
                                                       </Group>
                                                       <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
                                                   </Group>
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <Component id="read3" min="-2" pref="116" max="-2" attributes="0"/>
-                                                      <EmptySpace max="32767" attributes="0"/>
+                                                  <Group type="102" alignment="1" attributes="0">
+                                                      <Component id="createDoctorBtn" min="-2" pref="116" max="-2" attributes="0"/>
+                                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                      <Component id="updateBtn" min="-2" pref="116" max="-2" attributes="0"/>
+                                                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
-                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                  <Group type="102" attributes="0">
-                                                      <Component id="update3" min="-2" pref="116" max="-2" attributes="0"/>
-                                                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                                                      <Component id="delete3" min="-2" pref="116" max="-2" attributes="0"/>
-                                                  </Group>
+                                              <Group type="103" groupAlignment="0" attributes="0">
                                                   <Group type="102" attributes="0">
                                                       <Group type="103" groupAlignment="0" attributes="0">
                                                           <Component id="doctorEmailIdLbl" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -512,19 +547,15 @@
                                                           <Component id="doctorPhoneNo" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
                                                       </Group>
                                                   </Group>
-                                              </Group>
-                                          </Group>
-                                          <Group type="102" attributes="0">
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="hospitalDropdown" min="-2" max="-2" attributes="0"/>
                                                   <Group type="102" alignment="0" attributes="0">
-                                                      <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
-                                                      <Component id="addDocLbl" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="delete3" min="-2" pref="116" max="-2" attributes="0"/>
+                                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                      <Component id="clear1" min="-2" pref="95" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
-                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace pref="218" max="32767" attributes="0"/>
@@ -571,9 +602,9 @@
                               <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="createDoctorBtn" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="read3" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="update3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="updateBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="delete3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="clear1" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace pref="144" max="32767" attributes="0"/>
                           </Group>
@@ -655,20 +686,12 @@
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="createDoctorBtnActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JButton" name="read3">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Read"/>
-                      </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="read3ActionPerformed"/>
-                      </Events>
-                    </Component>
-                    <Component class="javax.swing.JButton" name="update3">
+                    <Component class="javax.swing.JButton" name="updateBtn">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Update"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="update3ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="updateBtnActionPerformed"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="delete3">
@@ -730,9 +753,20 @@
                               <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                             </Property>
                           </Properties>
+                          <Events>
+                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblDoctorMouseClicked"/>
+                          </Events>
                         </Component>
                       </SubComponents>
                     </Container>
+                    <Component class="javax.swing.JButton" name="clear1">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Clear"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="clear1ActionPerformed"/>
+                      </Events>
+                    </Component>
                   </SubComponents>
                 </Container>
                 <Container class="javax.swing.JPanel" name="patientPanel">
@@ -748,7 +782,7 @@
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
@@ -771,41 +805,18 @@
                                           <Component id="txtName" alignment="0" max="32767" attributes="0"/>
                                           <Component id="txtPersonID" max="32767" attributes="0"/>
                                       </Group>
-                                      <EmptySpace pref="150" max="32767" attributes="0"/>
+                                      <EmptySpace pref="380" max="32767" attributes="0"/>
                                       <Group type="103" groupAlignment="1" attributes="0">
-                                          <Group type="102" attributes="0">
-                                              <Component id="lblCity" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="32767" attributes="0"/>
-                                              <Component id="ddCity" min="-2" pref="170" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" attributes="0">
-                                              <Component id="lblHouseNumber" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace pref="119" max="32767" attributes="0"/>
-                                              <Component id="ddHouseNumber" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" attributes="0">
-                                              <Component id="lblAddress" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="32767" attributes="0"/>
-                                              <Component id="txtAddress" min="-2" pref="170" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" attributes="0">
-                                              <Component id="lblAge" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="32767" attributes="0"/>
-                                              <Component id="txtAge" min="-2" pref="170" max="-2" attributes="0"/>
-                                          </Group>
+                                          <Component id="ddCity" min="-2" pref="170" max="-2" attributes="0"/>
+                                          <Component id="ddHouseNumber" min="-2" max="-2" attributes="0"/>
+                                          <Component id="txtAddress" min="-2" pref="170" max="-2" attributes="0"/>
+                                          <Component id="txtAge" min="-2" pref="170" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" attributes="0">
                                       <EmptySpace min="-2" pref="234" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" attributes="0">
-                                              <Component id="lblBloodPressure" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="txtBloodPressure" min="-2" pref="78" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="btnCheck" min="-2" max="-2" attributes="0"/>
-                                          </Group>
                                           <Group type="102" attributes="0">
                                               <Component id="create1" min="-2" pref="95" max="-2" attributes="0"/>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -814,6 +825,24 @@
                                               <Component id="update1" min="-2" pref="95" max="-2" attributes="0"/>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
                                               <Component id="clear" min="-2" pref="95" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                                              <Component id="lblAge" min="-2" max="-2" attributes="0"/>
+                                              <Group type="102" attributes="0">
+                                                  <Component id="lblBloodPressure" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <Component id="txtBloodPressure" min="-2" pref="78" max="-2" attributes="0"/>
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <Component id="btnCheck" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                          <Group type="102" attributes="0">
+                                              <EmptySpace min="253" pref="253" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="lblHouseNumber" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="lblCity" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="lblAddress" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              </Group>
                                           </Group>
                                       </Group>
                                       <EmptySpace max="32767" attributes="0"/>
@@ -845,7 +874,7 @@
                               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jScrollPane6" min="-2" pref="91" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="32767" attributes="0"/>
+                              <EmptySpace type="unrelated" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="txtPersonID" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -861,8 +890,8 @@
                                   <Component id="lblName" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtName" alignment="1" min="-2" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="lblAddress" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="txtAddress" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                                      <Component id="lblAddress" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -938,8 +967,8 @@
                           <StringArray count="4">
                             <StringItem index="0" value="Choose a Community"/>
                             <StringItem index="1" value="Boylston"/>
-                            <StringItem index="2" value="Mission Main"/>
-                            <StringItem index="3" value="Mission Hill"/>
+                            <StringItem index="2" value="MissionMain"/>
+                            <StringItem index="3" value="MissionHill"/>
                           </StringArray>
                         </Property>
                       </Properties>

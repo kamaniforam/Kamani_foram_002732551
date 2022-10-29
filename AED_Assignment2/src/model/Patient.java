@@ -14,7 +14,7 @@ public class Patient extends Person {
     private String patientD;
     private boolean isStable;
 
-    public Patient(String name, int age, String id, House house, VitalSigns vitalSigns, String patientID, boolean isStable) {
+    public Patient(String name, int age, int id, House house, VitalSigns vitalSigns, String patientID, boolean isStable) {
         super(name, age, id, house);
         this.vitalSigns = vitalSigns;
         this.patientD = patientID;

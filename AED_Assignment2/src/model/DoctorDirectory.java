@@ -32,7 +32,7 @@ public class DoctorDirectory {
         return doc;
     }
     
-    public void deletePerson(Doctor doc){
+    public void deleteDoctor(Doctor doc){
         listOfDoctors.remove(doc);
     }
     

@@ -5,9 +5,9 @@
 package uiComponents;
 
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import model.DoctorDirectory;
 import model.EncounterHistory;
+import model.HospitalDirectory;
 import model.PatientDirectory;
 import model.PersonDirectory;
 import model.UserDetails;
@@ -27,6 +27,7 @@ public class LoginJPanel extends javax.swing.JPanel {
     PersonDirectory personDirectory;
     EncounterHistory encounterHistory;
     DoctorDirectory doctorDirectory;
+    HospitalDirectory hospitalDirectory;
     
     public LoginJPanel(javax.swing.JSplitPane jSplitPane1) {
        initComponents();
@@ -35,6 +36,7 @@ public class LoginJPanel extends javax.swing.JPanel {
        patientDirectory = new PatientDirectory();
        encounterHistory = new EncounterHistory();
        doctorDirectory = new DoctorDirectory();
+       hospitalDirectory = new HospitalDirectory();
        this.jSplitPane1 = jSplitPane1;
     }
 
@@ -47,7 +49,6 @@ public class LoginJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        password = new javax.swing.JTextField();
         username = new javax.swing.JTextField();
         passwordLbl = new javax.swing.JLabel();
         usernameLbl = new javax.swing.JLabel();
@@ -55,6 +56,7 @@ public class LoginJPanel extends javax.swing.JPanel {
         loginBtn = new javax.swing.JButton();
         dropdownRole = new javax.swing.JComboBox<>();
         role = new javax.swing.JLabel();
+        password = new javax.swing.JPasswordField();
 
         setBackground(new java.awt.Color(204, 204, 255));
 
@@ -101,15 +103,15 @@ public class LoginJPanel extends javax.swing.JPanel {
                             .addComponent(passwordLbl, javax.swing.GroupLayout.Alignment.LEADING))
                         .addGap(43, 43, 43)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(username)
+                            .addComponent(dropdownRole, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(password)
-                            .addComponent(dropdownRole, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(222, 222, 222)
-                        .addComponent(loginBtn))
+                            .addComponent(username)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(211, 211, 211)
-                        .addComponent(loginLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(loginLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(222, 222, 222)
+                        .addComponent(loginBtn)))
                 .addContainerGap(115, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -117,11 +119,11 @@ public class LoginJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addComponent(loginLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(usernameLbl)
                     .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
+                .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(passwordLbl)
                     .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -131,7 +133,7 @@ public class LoginJPanel extends javax.swing.JPanel {
                     .addComponent(dropdownRole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(51, 51, 51)
                 .addComponent(loginBtn)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -153,24 +155,24 @@ public class LoginJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "LOGIN SUCCESSFULL");
             if(null != UserDetails.Roles.fromString(role))switch (UserDetails.Roles.fromString(role)) {
                 case SYSTEM_ADMINISTRATOR -> {
-                    SystemAdminJPanel systemAdminPane = new SystemAdminJPanel(personDirectory, patientDirectory, encounterHistory, doctorDirectory);
+                    SystemAdminJPanel systemAdminPane = new SystemAdminJPanel(personDirectory, patientDirectory, encounterHistory, doctorDirectory,hospitalDirectory);
                     jSplitPane1.setRightComponent(systemAdminPane);
                     }
                 case DOCTOR -> {
-                    SystemAdminJPanel systemAdminPane = new SystemAdminJPanel(personDirectory, patientDirectory, encounterHistory, doctorDirectory);
+                    SystemAdminJPanel systemAdminPane = new SystemAdminJPanel(personDirectory, patientDirectory, encounterHistory, doctorDirectory,hospitalDirectory);
                     jSplitPane1.setRightComponent(systemAdminPane);
                     }
                 case PATIENT -> {
-                    SystemAdminJPanel systemAdminPane = new SystemAdminJPanel(personDirectory, patientDirectory, encounterHistory, doctorDirectory);
-                    jSplitPane1.setRightComponent(systemAdminPane);
+                    CreateJPanel createPane = new CreateJPanel(personDirectory, patientDirectory, encounterHistory, jSplitPane1);
+                    jSplitPane1.setRightComponent(createPane);
                     }
                 case COMMUNITY_ADMINISTRATOR -> {
-                    SystemAdminJPanel systemAdminPane = new SystemAdminJPanel(personDirectory, patientDirectory, encounterHistory, doctorDirectory);
-                    jSplitPane1.setRightComponent(systemAdminPane);
+                    CommunityAdminJPanel communityAdminPane = new CommunityAdminJPanel();
+                    jSplitPane1.setRightComponent(communityAdminPane);
                     }
                 case HOSPITAL_ADMINISTRATOR -> {
-                    SystemAdminJPanel systemAdminPane = new SystemAdminJPanel(personDirectory, patientDirectory, encounterHistory, doctorDirectory);
-                    jSplitPane1.setRightComponent(systemAdminPane);
+                    HospitalAdminJPanel hospitalAdminPane = new HospitalAdminJPanel(personDirectory, patientDirectory, encounterHistory, doctorDirectory,hospitalDirectory);
+                    jSplitPane1.setRightComponent(hospitalAdminPane);
                     }
                 default -> {
                     JOptionPane.showMessageDialog(this, "SELECT ROLE");
@@ -192,7 +194,7 @@ public class LoginJPanel extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> dropdownRole;
     private javax.swing.JButton loginBtn;
     private javax.swing.JLabel loginLbl;
-    private javax.swing.JTextField password;
+    private javax.swing.JPasswordField password;
     private javax.swing.JLabel passwordLbl;
     private javax.swing.JLabel role;
     private javax.swing.JTextField username;
