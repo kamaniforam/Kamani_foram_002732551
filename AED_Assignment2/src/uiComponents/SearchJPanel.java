@@ -5,6 +5,8 @@
 package uiComponents;
 
 import javax.swing.JOptionPane;
+
+import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import model.Encounter;
 import model.EncounterHistory;
@@ -57,6 +59,7 @@ public class SearchJPanel extends javax.swing.JPanel {
         ddCity1 = new javax.swing.JComboBox<>();
         viewPerson = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+
 
         setBackground(new java.awt.Color(204, 204, 255));
         setForeground(new java.awt.Color(153, 255, 255));
@@ -143,42 +146,40 @@ public class SearchJPanel extends javax.swing.JPanel {
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 843, Short.MAX_VALUE)
+
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 766, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(72, 72, 72)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(hospitalLbl1)
                                     .addComponent(cityLbl))
                                 .addGap(64, 64, 64)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(ddCommunity1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(ddCity1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btnSearch)
-                                        .addGap(26, 26, 26)
-                                        .addComponent(viewPerson)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(btnSearch)
+                                    .addComponent(ddCommunity1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(ddCity1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(0, 0, Short.MAX_VALUE))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton1))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(347, 347, 347)
-                                .addComponent(jLabel1))
+                                .addGap(221, 221, 221)
+                                .addComponent(jLabel2))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(301, 301, 301)
-                                .addComponent(jLabel2)))
+                                .addGap(275, 275, 275)
+                                .addComponent(jLabel1)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(viewPerson)
+                .addGap(329, 329, 329))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(34, 34, 34)
+                .addGap(12, 12, 12)
                 .addComponent(jLabel1)
-                .addGap(29, 29, 29)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
@@ -195,10 +196,10 @@ public class SearchJPanel extends javax.swing.JPanel {
                     .addComponent(cityLbl)
                     .addComponent(ddCity1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSearch)
-                    .addComponent(viewPerson))
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addComponent(btnSearch)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(viewPerson)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 

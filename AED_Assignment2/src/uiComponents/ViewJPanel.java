@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import javax.swing.InputVerifier;
 import javax.swing.JOptionPane;
+
 import javax.swing.table.DefaultTableModel;
 import model.Encounter;
 import model.EncounterHistory;
@@ -366,9 +367,9 @@ public class ViewJPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnUpdate1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(19, Short.MAX_VALUE))
+
+                    .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -493,13 +494,10 @@ public class ViewJPanel extends javax.swing.JPanel {
         boolean patientYN = false;
         int selectedRowIndex = tblPatient.getSelectedRow();
         DefaultTableModel model = (DefaultTableModel) tblPatient.getModel();
-//        Person person = (Person) model.getValueAt(selectedRowIndex , 0);
-     //System.out.println("print value ========="+model.getValueAt(selectedRowIndex , 0));
-       // System.out.println("check details:"+personDirectory.getListOfPerson());
+
         String patientName=String.valueOf(model.getValueAt(selectedRowIndex , 0));
-       List<Person> persons= personDirectory.getListOfPerson();
-//        patientYN = ifPatientExist(person.getNameOfPerson());
-//
+        List<Person> persons= personDirectory.getListOfPerson();
+/
         if(null!=patientName){
 
             JOptionPane.showMessageDialog(this, "Appointment Confirmed ");
@@ -507,7 +505,7 @@ public class ViewJPanel extends javax.swing.JPanel {
         else{
             JOptionPane.showMessageDialog(this, "Appointment Confirmed ");
         }
-    }//GEN-LAST:event_btnUpdate1ActionPerformed
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
