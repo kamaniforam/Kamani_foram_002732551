@@ -22,8 +22,9 @@ public class PersonDirectory {
         return listOfPerson;
     }
 
-    public void setListOfPerson(ArrayList<Person> listOfPerson) {
-        this.listOfPerson = listOfPerson;
+    public void setListOfPerson(Person person) {
+        //System.out.println(person);
+        this.listOfPerson.add(person);
     }
     
     public Person addNewPerson(){

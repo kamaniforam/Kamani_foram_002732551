@@ -20,8 +20,8 @@ public class EncounterHistory {
         return listOfEncounter;
     }
 
-    public void setListOfEncounter(ArrayList<Encounter> listOfEncounter) {
-        this.listOfEncounter = listOfEncounter;
+    public void setListOfEncounter(Encounter encounter) {
+        this.listOfEncounter.add(encounter);
     }
     
     public void addEncounter(Encounter encounter){

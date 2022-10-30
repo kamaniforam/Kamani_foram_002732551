@@ -181,7 +181,7 @@ public class CreateJPanel extends javax.swing.JPanel {
                                 .addComponent(btnSave)
                                 .addGap(27, 27, 27)
                                 .addComponent(viewPerson)))))
-                .addGap(0, 150, Short.MAX_VALUE))
+                .addGap(0, 125, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -216,7 +216,7 @@ public class CreateJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(viewPerson, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(101, Short.MAX_VALUE))
+                .addContainerGap(260, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -260,6 +260,7 @@ public class CreateJPanel extends javax.swing.JPanel {
             house.setZipCode(Integer.parseInt(txtZipCode.getText()));
 
             person.setHouse(house);
+            //this.personDirectory.setListOfPerson(person);
             JOptionPane.showMessageDialog(this, "Profile Saved");
 
         }
@@ -317,6 +318,7 @@ public class CreateJPanel extends javax.swing.JPanel {
         txtPersonID.setInputVerifier(integerVerifier);
         txtAge.setInputVerifier(integerVerifier);
         txtZipCode.setInputVerifier(integerVerifier);
+        
         InputVerifier stringVerifier = new VerifyString();
         txtName.setInputVerifier(stringVerifier);
         txtAddress.setInputVerifier(stringVerifier);

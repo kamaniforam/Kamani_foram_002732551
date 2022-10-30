@@ -26,11 +26,11 @@ public class MainJFrame extends javax.swing.JFrame {
     public MainJFrame() {
         initComponents();
         
-        personDirectory = new PersonDirectory();
-        patientDirectory = new PatientDirectory();
-        encounterHistory = new EncounterHistory();
-        doctorDirectory = new DoctorDirectory();
-        hospitalDirectory = new HospitalDirectory();
+        this.personDirectory = new PersonDirectory();
+        this.patientDirectory = new PatientDirectory();
+        this.encounterHistory = new EncounterHistory();
+        this.doctorDirectory = new DoctorDirectory();
+        this.hospitalDirectory = new HospitalDirectory();
     }
 
     /**
@@ -110,7 +110,9 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
         // TODO add your handling code here:
-        LoginJPanel login = new LoginJPanel(jSplitPane1);
+        LoginJPanel login = new LoginJPanel(jSplitPane1, this.personDirectory, this.patientDirectory, this.encounterHistory,
+        this.doctorDirectory, this.hospitalDirectory);
+        
         jSplitPane1.setRightComponent(login);
     }//GEN-LAST:event_loginBtnActionPerformed
 

@@ -29,14 +29,15 @@ public class LoginJPanel extends javax.swing.JPanel {
     DoctorDirectory doctorDirectory;
     HospitalDirectory hospitalDirectory;
     
-    public LoginJPanel(javax.swing.JSplitPane jSplitPane1) {
+    public LoginJPanel(javax.swing.JSplitPane jSplitPane1,PersonDirectory personDirectory, PatientDirectory patientDirectory, 
+            EncounterHistory encounterHistory, DoctorDirectory doctorDirectory, HospitalDirectory hospitalDirectory ) {
        initComponents();
        
-       personDirectory = new PersonDirectory();
-       patientDirectory = new PatientDirectory();
-       encounterHistory = new EncounterHistory();
-       doctorDirectory = new DoctorDirectory();
-       hospitalDirectory = new HospitalDirectory();
+       this.personDirectory = personDirectory;
+       this.patientDirectory = patientDirectory;
+       this.encounterHistory = encounterHistory;
+       this.doctorDirectory = doctorDirectory;
+       this.hospitalDirectory =hospitalDirectory;
        this.jSplitPane1 = jSplitPane1;
     }
 
@@ -70,6 +71,7 @@ public class LoginJPanel extends javax.swing.JPanel {
 
         usernameLbl.setText("User Name:");
 
+        loginLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 36)); // NOI18N
         loginLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         loginLbl.setText("LOGIN");
 
@@ -80,7 +82,7 @@ public class LoginJPanel extends javax.swing.JPanel {
             }
         });
 
-        dropdownRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "System administrator", "patient", "hospital administrator", "community administrator", "Doctor" }));
+        dropdownRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose a Role", "System administrator", "patient", "hospital administrator", "community administrator", "Doctor" }));
         dropdownRole.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dropdownRoleActionPerformed(evt);
@@ -96,30 +98,30 @@ public class LoginJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(156, 156, 156)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(usernameLbl)
-                            .addComponent(role, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(passwordLbl, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addGap(43, 43, 43)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(dropdownRole, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(password)
-                            .addComponent(username)))
+                        .addGap(108, 108, 108)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(loginLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(usernameLbl)
+                                    .addComponent(role, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(passwordLbl, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addGap(43, 43, 43)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(dropdownRole, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(password)
+                                    .addComponent(username)))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(211, 211, 211)
-                        .addComponent(loginLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(222, 222, 222)
+                        .addGap(228, 228, 228)
                         .addComponent(loginBtn)))
                 .addContainerGap(115, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(loginLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
+                .addGap(14, 14, 14)
+                .addComponent(loginLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(usernameLbl)
                     .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -131,9 +133,9 @@ public class LoginJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(role, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(dropdownRole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(51, 51, 51)
+                .addGap(36, 36, 36)
                 .addComponent(loginBtn)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
