@@ -13,6 +13,9 @@ public class Person {
     private int idOfPerson;
     House house;
     
+    public Person(){
+        
+    }
     public Person(String name, int age, int id, House house){
         this.nameOfPerson = name;
         this.ageOfPerson = age;
@@ -50,6 +53,11 @@ public class Person {
 
     public void setHouse(House house) {
         this.house = house;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" + "nameOfPerson=" + nameOfPerson + ", ageOfPerson=" + ageOfPerson + ", idOfPerson=" + idOfPerson + ", house=" + house + '}';
     }
     
 }

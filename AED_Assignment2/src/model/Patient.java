@@ -14,12 +14,19 @@ public class Patient extends Person {
     private String patientD;
     private boolean isStable;
 
+    public Patient(){
+        
+    }
+    
     public Patient(String name, int age, int id, House house, VitalSigns vitalSigns, String patientID, boolean isStable) {
         super(name, age, id, house);
         this.vitalSigns = vitalSigns;
         this.patientD = patientID;
         this.isStable = isStable;
     }
+    
+  
+
 
     public VitalSigns getVitalSigns() {
         return vitalSigns;
@@ -53,10 +60,11 @@ public class Patient extends Person {
                 isPatientNormal = false;
             }
         } else {
-            if (vitalSigns.getBloodPressure() < 75 || vitalSigns.getBloodPressure() > 125) {
+            if (vitalSigns.getBloodPressure() < 95 || vitalSigns.getBloodPressure() > 105) {
                 isPatientNormal = false;
             }
         }
         return isPatientNormal;
     }
+
 }

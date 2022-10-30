@@ -181,7 +181,7 @@ public class CreateJPanel extends javax.swing.JPanel {
                                 .addComponent(btnSave)
                                 .addGap(27, 27, 27)
                                 .addComponent(viewPerson)))))
-                .addGap(0, 150, Short.MAX_VALUE))
+                .addGap(0, 128, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -216,7 +216,7 @@ public class CreateJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(viewPerson, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(101, Short.MAX_VALUE))
+                .addContainerGap(95, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -254,12 +254,13 @@ public class CreateJPanel extends javax.swing.JPanel {
             person.setNameOfPerson(txtName.getText());
 
             house.setStreetName(txtAddress.getText());
-            house.setApartmentNumber(Integer.parseInt(ddHouseNumber.getSelectedItem().toString()));
+            house.setApartmentNumber(ddHouseNumber.getSelectedItem().toString());
             house.setNameOfCity(ddCity.getSelectedItem().toString());
             house.setNameOfCommunity(ddCommunity.getSelectedItem().toString());
             house.setZipCode(Integer.parseInt(txtZipCode.getText()));
 
             person.setHouse(house);
+            //this.personDirectory.setListOfPerson(person);
             JOptionPane.showMessageDialog(this, "Profile Saved");
 
         }
@@ -317,6 +318,7 @@ public class CreateJPanel extends javax.swing.JPanel {
         txtPersonID.setInputVerifier(integerVerifier);
         txtAge.setInputVerifier(integerVerifier);
         txtZipCode.setInputVerifier(integerVerifier);
+        
         InputVerifier stringVerifier = new VerifyString();
         txtName.setInputVerifier(stringVerifier);
         txtAddress.setInputVerifier(stringVerifier);

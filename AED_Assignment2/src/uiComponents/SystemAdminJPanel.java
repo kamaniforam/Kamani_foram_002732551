@@ -42,6 +42,7 @@ public class SystemAdminJPanel extends javax.swing.JPanel {
         displayPatientTableDetails();
         displayPersonTableDetails();
         displayDoctorTableDetails();
+        displayEncounterHistory();
     }
 
     /**
@@ -342,8 +343,8 @@ public class SystemAdminJPanel extends javax.swing.JPanel {
             encounterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(encounterPanelLayout.createSequentialGroup()
                 .addGap(37, 37, 37)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 601, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(218, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 779, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(40, Short.MAX_VALUE))
         );
         encounterPanelLayout.setVerticalGroup(
             encounterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -902,7 +903,7 @@ public class SystemAdminJPanel extends javax.swing.JPanel {
             person.setNameOfPerson(txtName.getText());
 
             house.setStreetName(txtAddress.getText());
-            house.setApartmentNumber(Integer.parseInt(ddHouseNumber.getSelectedItem().toString()));
+            house.setApartmentNumber(ddHouseNumber.getSelectedItem().toString());
             house.setNameOfCity(ddCity.getSelectedItem().toString());
             house.setNameOfCommunity(ddCommunity.getSelectedItem().toString());
             house.setZipCode(Integer.parseInt(txtZipCode.getText()));
@@ -1231,6 +1232,7 @@ public class SystemAdminJPanel extends javax.swing.JPanel {
     private void displayPatientTableDetails() {
         DefaultTableModel tblmodel = (DefaultTableModel) patientTbl.getModel();
         tblmodel.setRowCount(0);
+        System.out.println(patientDirectory.getListOfPatients());
         for (Patient patient : patientDirectory.getListOfPatients()) {
             Object[] row = new Object[10];
             row[0] = patient.getIdOfPerson();
@@ -1294,5 +1296,19 @@ public class SystemAdminJPanel extends javax.swing.JPanel {
             tblmodel.addRow(row);
         }
     }
+    
+      private void displayEncounterHistory(){
+        DefaultTableModel model = (DefaultTableModel) encounterTable.getModel();
+        model.setRowCount(0);
+        for(Encounter encounter: encounterHistory.getListOfEncounter()){
+            Object[]row = new Object[4];
+            row[0] = encounter.getPatientID();
+            row[1] = encounter.getVitalSigns().getBloodPressure();
+            row[2] = encounter.isIsStable() ? "Healthy" : "Not Healthy";
+            row[3] = encounter.getDateOfVisit();
+            model.addRow(row);
+        }
+    }
+    
 
 }

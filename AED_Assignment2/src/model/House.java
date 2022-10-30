@@ -9,17 +9,17 @@ package model;
  * @author foram
  */
 public class House {
-    private int apartmentNumber;
+    private String apartmentNumber;
     private String streetName;
     private int zipCode;
     private String nameOfCommunity;
     private String nameOfCity;
 
-    public int getApartmentNumber() {
+    public String getApartmentNumber() {
         return apartmentNumber;
     }
 
-    public void setApartmentNumber(int apartmentNumber) {
+    public void setApartmentNumber(String apartmentNumber) {
         this.apartmentNumber = apartmentNumber;
     }
 

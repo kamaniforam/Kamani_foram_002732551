@@ -22,8 +22,9 @@ public class PersonDirectory {
         return listOfPerson;
     }
 
-    public void setListOfPerson(ArrayList<Person> listOfPerson) {
-        this.listOfPerson = listOfPerson;
+    public void setListOfPerson(Person person) {
+        //System.out.println(person);
+        this.listOfPerson.add(person);
     }
     
     public Person addNewPerson(){
@@ -36,4 +37,10 @@ public class PersonDirectory {
     public void deletePerson(Person person){
         listOfPerson.remove(person);
     }
+
+    @Override
+    public String toString() {
+        return "PersonDirectory{" + "listOfPerson=" + listOfPerson + '}';
+    }
+    
 }
