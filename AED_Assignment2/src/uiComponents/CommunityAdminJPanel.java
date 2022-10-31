@@ -472,7 +472,7 @@ public class CommunityAdminJPanel extends javax.swing.JPanel {
                 .addContainerGap(42, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("ALL IN ONE", jPanel1);
+        jTabbedPane1.addTab("CITY/COMMUNITY", jPanel1);
 
         systemAdminLbl.setText("COMMUNITY ADMIN");
 

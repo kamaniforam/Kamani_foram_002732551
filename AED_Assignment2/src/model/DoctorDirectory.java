@@ -18,8 +18,8 @@ public class DoctorDirectory {
         return listOfDoctors;
     }
 
-    public void setListOfDoctors(ArrayList<Doctor> listOfDoctors) {
-        this.listOfDoctors = listOfDoctors;
+    public void setListOfDoctors(Doctor listOfDoctors) {
+        this.listOfDoctors.add(listOfDoctors);
     }
     
     public DoctorDirectory(){

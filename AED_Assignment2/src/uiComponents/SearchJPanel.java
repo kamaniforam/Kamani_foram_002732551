@@ -63,6 +63,7 @@ public class SearchJPanel extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         hospitalTable = new javax.swing.JTable();
+        btnSearch1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(204, 204, 255));
         setForeground(new java.awt.Color(153, 255, 255));
@@ -97,7 +98,7 @@ public class SearchJPanel extends javax.swing.JPanel {
         ));
         jScrollPane2.setViewportView(tblPatients);
 
-        btnSearch.setText("Search");
+        btnSearch.setText("Search Patient");
         btnSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSearchActionPerformed(evt);
@@ -157,6 +158,13 @@ public class SearchJPanel extends javax.swing.JPanel {
         });
         jScrollPane4.setViewportView(hospitalTable);
 
+        btnSearch1.setText("Search Near By Hospitals");
+        btnSearch1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearch1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -192,17 +200,17 @@ public class SearchJPanel extends javax.swing.JPanel {
                                         .addGap(64, 64, 64)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(layout.createSequentialGroup()
-                                                .addGap(174, 174, 174)
-                                                .addComponent(btnSearch))
-                                            .addGroup(layout.createSequentialGroup()
                                                 .addComponent(ddCommunity1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(50, 50, 50)
-                                                .addComponent(cityLbl)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(ddCity1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(197, 197, 197))))
+                                                .addComponent(cityLbl))
+                                            .addComponent(btnSearch))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(ddCity1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(btnSearch1))
+                                        .addGap(145, 145, 145))
                                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 832, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 23, Short.MAX_VALUE)))))
+                                .addGap(0, 86, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -227,7 +235,9 @@ public class SearchJPanel extends javax.swing.JPanel {
                     .addComponent(cityLbl)
                     .addComponent(ddCity1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
-                .addComponent(btnSearch)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSearch)
+                    .addComponent(btnSearch1))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -236,8 +246,7 @@ public class SearchJPanel extends javax.swing.JPanel {
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         // TODO add your handling code here:
-        
-        //TO-DO
+
         String city = ddCity1.getSelectedItem().toString();
         String community = ddCommunity1.getSelectedItem().toString();
 
@@ -263,31 +272,6 @@ public class SearchJPanel extends javax.swing.JPanel {
                 model.addRow(row);
             }
         }
-
-//        String city = ddCity1.getSelectedItem().toString();
-//        String community = ddCommunity1.getSelectedItem().toString();
-//
-//        DefaultTableModel model = (DefaultTableModel) hospitalTable.getModel();
-//        model.setRowCount(0);
-//
-//        for (Hospital hospital : hospitalDirectory.getListOfHospital()) {
-//            Object[] row = new Object[10];
-//
-//            row[0] = hospital;
-//
-//            if (hospital.getCity().equals(city) && hospital.getCommunity().equals(community)) {
-//
-//                row[0] = hospital.getHospitalId();
-//                row[1] = hospital.getHospitalName();
-//                row[2] = hospital.getCommunity();
-//                row[3] = hospital.getCity();
-//
-//                model.addRow(row);
-//
-//            } else {
-//                JOptionPane.showMessageDialog(this, "No Record found!");
-//            }
-//        }
 
     }//GEN-LAST:event_btnSearchActionPerformed
 
@@ -339,9 +323,36 @@ public class SearchJPanel extends javax.swing.JPanel {
 //        ddCommunity1.setSelectedItem(selectHospital.getCommunity());
     }//GEN-LAST:event_hospitalTableMouseClicked
 
+    private void btnSearch1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearch1ActionPerformed
+        // TODO add your handling code here:
+        
+        String city = ddCity1.getSelectedItem().toString();
+        String community = ddCommunity1.getSelectedItem().toString();
+
+        DefaultTableModel model = (DefaultTableModel) hospitalTable.getModel();
+        model.setRowCount(0);
+
+        for (Hospital hospital : hospitalDirectory.getListOfHospital()) {
+            Object[] row = new Object[10];
+
+            row[0] = hospital;
+
+            if (hospital.getCommunity().equals(community) && hospital.getCity().equals(city)) {
+
+                row[0] = hospital.getHospitalId();
+                row[1] = hospital.getHospitalName();
+                row[2] = hospital.getCommunity();
+                row[3] = hospital.getCity();
+             
+                model.addRow(row);
+            }
+        }
+    }//GEN-LAST:event_btnSearch1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSearch;
+    private javax.swing.JButton btnSearch1;
     private javax.swing.JLabel cityLbl;
     private javax.swing.JComboBox<String> ddCity1;
     private javax.swing.JComboBox<String> ddCommunity1;

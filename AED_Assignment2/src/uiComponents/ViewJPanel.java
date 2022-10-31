@@ -515,18 +515,12 @@ public class ViewJPanel extends javax.swing.JPanel {
     private void btnUpdate1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdate1ActionPerformed
         // TODO add your handling code here:
         
-        boolean patientYN = false;
         int selectedRowIndex = tblPatient.getSelectedRow();
         DefaultTableModel model = (DefaultTableModel) tblPatient.getModel();
-//        Person person = (Person) model.getValueAt(selectedRowIndex , 0);
-     //System.out.println("print value ========="+model.getValueAt(selectedRowIndex , 0));
-       // System.out.println("check details:"+personDirectory.getListOfPerson());
         String patientName=String.valueOf(model.getValueAt(selectedRowIndex , 0));
-       List<Person> persons= personDirectory.getListOfPerson();
-//        patientYN = ifPatientExist(person.getNameOfPerson());
-//
-        if(null!=patientName){
+        List<Person> persons= personDirectory.getListOfPerson();
 
+        if(null!=patientName){
             JOptionPane.showMessageDialog(this, "Appointment Confirmed ");
         }
         else{

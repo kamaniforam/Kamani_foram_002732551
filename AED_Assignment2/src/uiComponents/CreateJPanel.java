@@ -35,6 +35,7 @@ public class CreateJPanel extends javax.swing.JPanel {
         this.personDirectory = personDirectory;
         this.patientDirectory = patientDirectory;
         this.encounterHistory = encounterHistory;
+        this.hispDirectory = hispDirectory;
         this.jSplitPane1 = jSplitPane1;
         addVerifiers();
     }
