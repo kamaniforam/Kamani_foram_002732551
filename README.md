@@ -5,13 +5,13 @@ ASSIGNMENT 2
 FLOW:
 
 System Admin --> Create, Read, Update, Delete
-		     Patient, Doctor, Hospital, Encounters
+		 Patient, Doctor, Hospital, Encounters
 
 Hospital Admin --> Create, Read, Update
-			 Hospitals, Doctors, Patients, Encounters
+		   Hospitals, Doctors, Patients, Encounters
 
 Community Admin --> Create, Read, Update
-			  City, Community, Houses
+	            City, Community, Houses
 
 Patient -->	Read doctors based on community
 		Read personal encounters
@@ -20,7 +20,11 @@ Patient -->	Read doctors based on community
 
 
 Doctor -->  Creates Encounter
-		Read Encounters
-		Update Encounter details
-		Update Vital Signs
-		Create Vital Signs
+	    Read Encounters
+	    Update Encounter details
+	    Update Vital Signs
+	    Create Vital Signs
+
+Sequence Diagram
+
+
