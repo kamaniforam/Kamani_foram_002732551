@@ -24,7 +24,14 @@ Doctor -->  Creates Encounter
 	    Update Encounter details
 	    Update Vital Signs
 	    Create Vital Signs
+	    
 
-Sequence Diagram
+# Sequence Diagram
+
+<img width="736" alt="SequenceDiagram_Assignment2" src="https://user-images.githubusercontent.com/114442442/198926947-7ddbe6b0-16ee-461d-8847-07248bfa32df.png">
 
 
+
+# Class Diagram
+
+<img width="736" alt="Screen Shot 2022-10-30 at 11 43 25 PM" src="https://user-images.githubusercontent.com/114442442/198927282-f86f5f7a-ce5f-4d83-8202-e296da656c79.png">
