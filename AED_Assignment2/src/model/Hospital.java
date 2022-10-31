@@ -10,16 +10,16 @@ package model;
  */
 public class Hospital {
     
-    private String hospitalId;
+    private int hospitalId;
     private String hospitalName;
     private String community;
     private String city;
 
-    public String getHospitalId() {
+    public int getHospitalId() {
         return hospitalId;
     }
 
-    public void setHospitalId(String hospitalId) {
+    public void setHospitalId(int hospitalId) {
         this.hospitalId = hospitalId;
     }
 

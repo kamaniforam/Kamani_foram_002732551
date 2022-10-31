@@ -4,7 +4,6 @@
  */
 package uiComponents;
 
-import java.awt.Color;
 import javax.swing.InputVerifier;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -44,7 +43,7 @@ public class CommunityAdminJPanel extends javax.swing.JPanel {
         this.hospitalDirectory = hospitalDirectory;
         this.jSplitPane1 = jSplitPane1;
 
-        displayPersonTableDetails();
+       
         displayHousesTableDetails();
         addVerifiers();
     }
@@ -84,14 +83,12 @@ public class CommunityAdminJPanel extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         lblName1 = new javax.swing.JLabel();
         lblAge = new javax.swing.JLabel();
-        lblPersonID1 = new javax.swing.JLabel();
         lblAddress = new javax.swing.JLabel();
         lblCommunity2 = new javax.swing.JLabel();
         lblCity2 = new javax.swing.JLabel();
         lblZipCode1 = new javax.swing.JLabel();
         lblHouseNumber2 = new javax.swing.JLabel();
         txtAge = new javax.swing.JTextField();
-        txtPersonID = new javax.swing.JTextField();
         txtName = new javax.swing.JTextField();
         txtAddress = new javax.swing.JTextField();
         txtZipCode1 = new javax.swing.JTextField();
@@ -215,8 +212,8 @@ public class CommunityAdminJPanel extends javax.swing.JPanel {
                         .addComponent(lblCommunity)
                         .addGap(25, 25, 25)
                         .addGroup(housesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(ddCommunity, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(ddCity, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(ddCity, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(ddCommunity, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(181, 181, 181))
             .addGroup(housesPanelLayout.createSequentialGroup()
                 .addGroup(housesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -233,7 +230,7 @@ public class CommunityAdminJPanel extends javax.swing.JPanel {
                     .addGroup(housesPanelLayout.createSequentialGroup()
                         .addGap(392, 392, 392)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
         housesPanelLayout.setVerticalGroup(
             housesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -287,6 +284,9 @@ public class CommunityAdminJPanel extends javax.swing.JPanel {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblPersonMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                tblPersonMouseEntered(evt);
+            }
         });
         jScrollPane1.setViewportView(tblPerson);
 
@@ -299,8 +299,6 @@ public class CommunityAdminJPanel extends javax.swing.JPanel {
 
         lblAge.setText("Age:");
 
-        lblPersonID1.setText("Person ID");
-
         lblAddress.setText("Address:");
 
         lblCommunity2.setText("Community:");
@@ -310,12 +308,6 @@ public class CommunityAdminJPanel extends javax.swing.JPanel {
         lblZipCode1.setText("ZipCode:");
 
         lblHouseNumber2.setText("House Number:");
-
-        txtPersonID.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPersonIDActionPerformed(evt);
-            }
-        });
 
         txtName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -381,7 +373,6 @@ public class CommunityAdminJPanel extends javax.swing.JPanel {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblPersonID1)
                             .addComponent(lblName1)
                             .addComponent(lblZipCode1)
                             .addComponent(lblCommunity2))
@@ -389,8 +380,7 @@ public class CommunityAdminJPanel extends javax.swing.JPanel {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(ddCommunity3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtZipCode1)
-                            .addComponent(txtName)
-                            .addComponent(txtPersonID))
+                            .addComponent(txtName))
                         .addGap(50, 50, 50)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblAge)
@@ -405,15 +395,16 @@ public class CommunityAdminJPanel extends javax.swing.JPanel {
                             .addComponent(ddCity3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(265, 265, 265)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(btnSave)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(clearBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addComponent(jLabel2)))
                 .addGap(0, 128, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(195, 195, 195)
+                .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(clearBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -421,46 +412,54 @@ public class CommunityAdminJPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel2)
                 .addGap(32, 32, 32)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblPersonID1)
-                    .addComponent(txtPersonID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblAge))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblAge))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblAddress))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblHouseNumber2)
+                            .addComponent(ddHouseNumber2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblName1))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblZipCode1)
+                            .addComponent(txtZipCode1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblCommunity2)
+                            .addComponent(ddCommunity3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblAddress)
-                    .addComponent(lblName1))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblZipCode1)
-                    .addComponent(txtZipCode1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblHouseNumber2)
-                    .addComponent(ddHouseNumber2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblCommunity2)
-                    .addComponent(ddCommunity3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblCity2)
                     .addComponent(ddCity3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(46, 46, 46)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(clearBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(117, Short.MAX_VALUE))
+                .addContainerGap(89, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 969, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(94, 94, 94)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 736, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 992, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -474,6 +473,8 @@ public class CommunityAdminJPanel extends javax.swing.JPanel {
 
         jTabbedPane1.addTab("CITY/COMMUNITY", jPanel1);
 
+        systemAdminLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        systemAdminLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         systemAdminLbl.setText("COMMUNITY ADMIN");
 
         javax.swing.GroupLayout leftPanelLayout = new javax.swing.GroupLayout(leftPanel);
@@ -483,19 +484,19 @@ public class CommunityAdminJPanel extends javax.swing.JPanel {
             .addGroup(leftPanelLayout.createSequentialGroup()
                 .addGroup(leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(leftPanelLayout.createSequentialGroup()
-                        .addGap(371, 371, 371)
-                        .addComponent(systemAdminLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(leftPanelLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(leftPanelLayout.createSequentialGroup()
+                        .addGap(356, 356, 356)
+                        .addComponent(systemAdminLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         leftPanelLayout.setVerticalGroup(
             leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(leftPanelLayout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(systemAdminLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(53, 53, 53)
+                .addGap(29, 29, 29)
+                .addComponent(systemAdminLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 572, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(32, Short.MAX_VALUE))
         );
@@ -504,12 +505,12 @@ public class CommunityAdminJPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1012, Short.MAX_VALUE)
+            .addGap(0, 1016, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(leftPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(25, Short.MAX_VALUE)))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -524,7 +525,6 @@ public class CommunityAdminJPanel extends javax.swing.JPanel {
 
         private void addVerifiers() {
         InputVerifier integerVerifier = new VerifyNumber();
-        txtPersonID.setInputVerifier(integerVerifier);
         txtAge.setInputVerifier(integerVerifier);
         txtZipCode.setInputVerifier(integerVerifier);
         
@@ -536,9 +536,9 @@ public class CommunityAdminJPanel extends javax.swing.JPanel {
     private void clearBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearBtnActionPerformed
         // TODO add your handling code here:
 
+        txtAge.setText("");
         txtName.setText("");
         txtAddress.setText("");
-        txtPersonID.setText("");
         txtZipCode1.setText("");
         ddCity3.setSelectedIndex(0);
         ddCommunity3.setSelectedIndex(0);
@@ -559,38 +559,36 @@ public class CommunityAdminJPanel extends javax.swing.JPanel {
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
-        if (txtName.getText().isEmpty() || txtPersonID.getText().isEmpty()
-            || txtAddress.getText().isEmpty() || txtAge.getText().isEmpty()
-            || txtZipCode.getText().isEmpty() || ddCity.getSelectedItem() == null
-            || ddCommunity.getSelectedItem() == null || ddCity.getSelectedIndex() == 0
-            || ddCommunity.getSelectedIndex() == 0) {
+        if (txtAddress.getText().isEmpty() || txtAge.getText().isEmpty()
+            || txtZipCode1.getText().isEmpty() || ddCity3.getSelectedIndex() == 0
+            || ddCommunity3.getSelectedIndex() == 0 || ddHouseNumber2.getSelectedIndex() == 0) {
             JOptionPane.showMessageDialog(null, "All fields are Mandatory");
         } else {
 
             Person person = personDirectory.addNewPerson();
             House house = new House();
 
-            person.setIdOfPerson(Integer.parseInt(txtPersonID.getText()));
+            person.setIdOfPerson(getUniqueIdPerson());
             person.setAgeOfPerson(Integer.parseInt(txtAge.getText()));
             person.setNameOfPerson(txtName.getText());
 
             house.setStreetName(txtAddress.getText());
-            house.setNameOfCity(ddCity.getSelectedItem().toString());
-            house.setNameOfCommunity(ddCommunity.getSelectedItem().toString());
-            house.setZipCode(Integer.parseInt(txtZipCode.getText()));
-
+            house.setNameOfCity(ddCity3.getSelectedItem().toString());
+            house.setNameOfCommunity(ddCommunity3.getSelectedItem().toString());
+            house.setZipCode(Integer.parseInt(txtZipCode1.getText()));
+            house.setApartmentNumber(ddHouseNumber2.getSelectedItem().toString());
             person.setHouse(house);
             JOptionPane.showMessageDialog(this, "Profile Saved");
-
+            displayPersonTableDetails();
         }
 
-        txtPersonID.setText("");
         txtAge.setText("");
         txtName.setText("");
         txtAddress.setText("");
-        txtZipCode.setText("");
-        ddCity.setSelectedIndex(0);
-        ddCommunity.setSelectedIndex(0);
+        txtZipCode1.setText("");
+        ddCity3.setSelectedIndex(0);
+        ddCommunity3.setSelectedIndex(0);
+        ddHouseNumber2.setSelectedIndex(0);
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void ddCommunity3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ddCommunity3ActionPerformed
@@ -613,17 +611,12 @@ public class CommunityAdminJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNameActionPerformed
 
-    private void txtPersonIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPersonIDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPersonIDActionPerformed
-
     private void tblPersonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPersonMouseClicked
         // TODO add your handling code here:
         int selectedRowIndex = tblPerson.getSelectedRow();
 
         Person selectPerson = personDirectory.getListOfPerson().get(selectedRowIndex);
  
-        txtPersonID.setText(String.valueOf(selectPerson.getIdOfPerson()));
         txtAge.setText(String.valueOf(selectPerson.getAgeOfPerson()));
         txtName.setText(selectPerson.getNameOfPerson());
         txtAddress.setText(selectPerson.getHouse().getStreetName());
@@ -635,35 +628,37 @@ public class CommunityAdminJPanel extends javax.swing.JPanel {
 
     private void clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearActionPerformed
         // TODO add your handling code here:
-
+        aptNoTxt.setText("");
+        streetNoTxt.setText("");
+        txtZipCode.setText("");
+        ddCommunity.setSelectedIndex(0);
+        ddCity.setSelectedIndex(0);
     }//GEN-LAST:event_clearActionPerformed
 
     private void tblHousesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblHousesMouseClicked
         // TODO add your handling code here:
-        int selectedRowIndex = tblPerson.getSelectedRow();
+        int selectedRowIndex = tblHouses.getSelectedRow();
 
         Person selectPerson = personDirectory.getListOfPerson().get(selectedRowIndex);
 
-        txtPersonID.setText(String.valueOf(selectPerson.getIdOfPerson()));
-        txtAge.setText(String.valueOf(selectPerson.getAgeOfPerson()));
-        txtName.setText(selectPerson.getNameOfPerson());
-        txtAddress.setText(selectPerson.getHouse().getStreetName());
-        txtZipCode1.setText(String.valueOf(selectPerson.getHouse().getZipCode()));
-        ddCity3.setSelectedItem(selectPerson.getHouse().getNameOfCity());
-        ddCommunity3.setSelectedItem(selectPerson.getHouse().getNameOfCommunity());
-        ddHouseNumber2.setSelectedItem(selectPerson.getHouse().getApartmentNumber());
+        aptNoTxt.setText(String.valueOf(selectPerson.getHouse().getApartmentNumber()));
+        streetNoTxt.setText(selectPerson.getHouse().getStreetName());
+        txtZipCode.setText(String.valueOf(selectPerson.getHouse().getZipCode()));
+        ddCity.setSelectedItem(selectPerson.getHouse().getNameOfCity());
+        ddCommunity.setSelectedItem(selectPerson.getHouse().getNameOfCommunity());
     }//GEN-LAST:event_tblHousesMouseClicked
 
     private void update1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_update1ActionPerformed
         // TODO add your handling code here:
         int selectedRowIndex = tblHouses.getSelectedRow();
         DefaultTableModel model = (DefaultTableModel) tblHouses.getModel();
-        model.setValueAt(streetNoTxt.getText(), selectedRowIndex, 0);
-
-        model.setValueAt(ddCity.getSelectedItem(), selectedRowIndex, 2);
-        model.setValueAt(ddCommunity.getSelectedItem(), selectedRowIndex, 3);
-      
-        model.setValueAt(txtZipCode.getText(), selectedRowIndex, 7);
+        model.setValueAt(aptNoTxt.getText(), selectedRowIndex, 0);
+        model.setValueAt(streetNoTxt.getText(), selectedRowIndex, 1);
+        model.setValueAt(txtZipCode.getText(), selectedRowIndex, 2);
+        model.setValueAt(ddCommunity.getSelectedItem(), selectedRowIndex, 3);   
+        
+        model.setValueAt(ddCity.getSelectedItem(), selectedRowIndex, 4);   
+       
     }//GEN-LAST:event_update1ActionPerformed
 
     private void create1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_create1ActionPerformed
@@ -671,30 +666,33 @@ public class CommunityAdminJPanel extends javax.swing.JPanel {
 
         //Save Patient Profile --> System Admin
         if (streetNoTxt.getText().isEmpty() || aptNoTxt.getText().isEmpty()
-            || aptNoTxt.getText().isEmpty() || txtZipCode.getText().isEmpty() || ddCity.getSelectedItem() == null
-            || ddCommunity.getSelectedItem() == null) {
+            || aptNoTxt.getText().isEmpty() || txtZipCode.getText().isEmpty() || ddCity.getSelectedIndex() == 0
+            || ddCommunity.getSelectedIndex() == 0) {
             JOptionPane.showMessageDialog(null, "All fields are Mandatory");
         } else {
 
             Person person = personDirectory.addNewPerson();
             House house = new House();
-            person.setIdOfPerson(Integer.parseInt(aptNoTxt.getText()));
+            person.setIdOfPerson(getUniqueIdPerson());
             person.setNameOfPerson(streetNoTxt.getText());
 
             house.setNameOfCity(ddCity.getSelectedItem().toString());
             house.setNameOfCommunity(ddCommunity.getSelectedItem().toString());
             house.setZipCode(Integer.parseInt(txtZipCode.getText()));
-
+            house.setApartmentNumber(aptNoTxt.getText());
+            house.setStreetName(streetNoTxt.getText());
+            
             person.setHouse(house);
             JOptionPane.showMessageDialog(this, "Profile Saved");
-
+            
+            displayHousesTableDetails();
         }
 
         aptNoTxt.setText("");
         streetNoTxt.setText("");
         txtZipCode.setText("");
         ddCommunity.setSelectedIndex(0);
-        ddCity.setSelectedItem(0);
+        ddCity.setSelectedIndex(0);
     }//GEN-LAST:event_create1ActionPerformed
 
     private void aptNoTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aptNoTxtActionPerformed
@@ -716,6 +714,10 @@ public class CommunityAdminJPanel extends javax.swing.JPanel {
     private void ddCommunityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ddCommunityActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ddCommunityActionPerformed
+
+    private void tblPersonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPersonMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblPersonMouseEntered
 
     private void displayPersonTableDetails(){
         DefaultTableModel tblmodel = (DefaultTableModel) tblPerson.getModel();
@@ -782,7 +784,6 @@ public class CommunityAdminJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblName1;
     private javax.swing.JLabel lblPersonID;
-    private javax.swing.JLabel lblPersonID1;
     private javax.swing.JLabel lblZipCode;
     private javax.swing.JLabel lblZipCode1;
     private javax.swing.JPanel leftPanel;
@@ -793,9 +794,19 @@ public class CommunityAdminJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtAddress;
     private javax.swing.JTextField txtAge;
     private javax.swing.JTextField txtName;
-    private javax.swing.JTextField txtPersonID;
     private javax.swing.JTextField txtZipCode;
     private javax.swing.JTextField txtZipCode1;
     private javax.swing.JButton update1;
     // End of variables declaration//GEN-END:variables
+   private int getUniqueIdPerson() {
+        
+        int randomPIN = (int)(Math.random()*90000)+10000;
+        for(Person person : personDirectory.getListOfPerson()){
+            if(person.getIdOfPerson()== randomPIN){
+            getUniqueIdPerson();
+            }
+        }
+        return randomPIN;
+    }
+
 }

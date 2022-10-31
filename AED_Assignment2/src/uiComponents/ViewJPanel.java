@@ -8,6 +8,7 @@ import java.util.List;
 import javax.swing.InputVerifier;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import model.DoctorDirectory;
 import model.Encounter;
 import model.EncounterHistory;
 import model.HospitalDirectory;
@@ -33,13 +34,16 @@ public class ViewJPanel extends javax.swing.JPanel {
     PatientDirectory patientDirectory;
     EncounterHistory encounterHistory;
     HospitalDirectory hospitalDirectory;
-    public ViewJPanel(PersonDirectory personDirectory, PatientDirectory patientDirectory, EncounterHistory encounterHistory, javax.swing.JSplitPane jSplitPane1,HospitalDirectory hospitalDirectory) {
+    DoctorDirectory doctorDirectory;
+    
+    public ViewJPanel(PersonDirectory personDirectory, PatientDirectory patientDirectory, EncounterHistory encounterHistory, javax.swing.JSplitPane jSplitPane1,HospitalDirectory hospitalDirectory, DoctorDirectory doctorDirectory) {
         initComponents();
         this.personDirectory = personDirectory;
         this.patientDirectory = patientDirectory;
         this.encounterHistory = encounterHistory;
         this.hospitalDirectory = hospitalDirectory;
         this.jSplitPane1 = jSplitPane1;
+        this.doctorDirectory = doctorDirectory;
         
         displayPersonTableDetails();
         displayPatientTableDetails();
@@ -321,25 +325,24 @@ public class ViewJPanel extends javax.swing.JPanel {
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(127, 127, 127)
                                         .addComponent(btnCheck)))
-                                .addGap(0, 203, Short.MAX_VALUE))))
+                                .addGap(0, 62, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(371, 371, 371)
                                 .addComponent(jLabel1))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(403, 403, 403)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(355, 355, 355)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(252, 252, 252)
+                                .addComponent(btnUpdate1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(32, 32, 32)
+                                .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(37, 37, 37)
+                                .addComponent(btnSave)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(252, 252, 252)
-                .addComponent(btnUpdate1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnSave)
-                .addGap(18, 18, 18)
-                .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -388,7 +391,7 @@ public class ViewJPanel extends javax.swing.JPanel {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnUpdate1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30))
@@ -494,13 +497,13 @@ public class ViewJPanel extends javax.swing.JPanel {
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         // TODO add your handling code here:
-        SearchJPanel searchPane = new SearchJPanel(encounterHistory, patientDirectory,personDirectory,jSplitPane1,hospitalDirectory);
+        SearchJPanel searchPane = new SearchJPanel(encounterHistory, patientDirectory,personDirectory,jSplitPane1,hospitalDirectory,doctorDirectory);
         jSplitPane1.setRightComponent(searchPane);
     }//GEN-LAST:event_btnSearchActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
-        CreateJPanel createPane = new CreateJPanel(personDirectory, patientDirectory, encounterHistory, jSplitPane1,hospitalDirectory);
+        CreateJPanel createPane = new CreateJPanel(personDirectory, patientDirectory, encounterHistory, jSplitPane1,hospitalDirectory,doctorDirectory);
         jSplitPane1.setRightComponent(createPane);
     }//GEN-LAST:event_btnSaveActionPerformed
 

@@ -4,14 +4,13 @@
  */
 package uiComponents;
 
-import javax.swing.InputVerifier;
 import javax.swing.table.DefaultTableModel;
+import model.DoctorDirectory;
 import model.Encounter;
 import model.EncounterHistory;
 import model.HospitalDirectory;
 import model.PatientDirectory;
 import model.PersonDirectory;
-import validations.VerifyNumber;
 
 /**
  *
@@ -27,15 +26,17 @@ public class DoctorJPanel extends javax.swing.JPanel {
     PersonDirectory personDirectory;
     PatientDirectory patientDirectory;
     HospitalDirectory hispDirectory;
+     DoctorDirectory doctorDirectory;
     public DoctorJPanel(EncounterHistory encounterHistory,  PersonDirectory personDirectory,PatientDirectory patientDirectory,
-    HospitalDirectory hispDirectory,javax.swing.JSplitPane jSplitPane1) {
+    HospitalDirectory hispDirectory,javax.swing.JSplitPane jSplitPane1, DoctorDirectory doctorDirectory) {
         initComponents();
         this.personDirectory = personDirectory;
         this.patientDirectory = patientDirectory;
         this.encounterHistory = encounterHistory;
         this.jSplitPane1 = jSplitPane1;
+        this.doctorDirectory = doctorDirectory;
         displayEncounterHistory();
-        addVerifiers();
+   
     }
 
     /**
@@ -54,9 +55,13 @@ public class DoctorJPanel extends javax.swing.JPanel {
         bpTxt = new javax.swing.JTextField();
         jScrollPane7 = new javax.swing.JScrollPane();
         tblPatientHistory1 = new javax.swing.JTable();
+        bp1 = new javax.swing.JLabel();
+        heartRateTxt = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(204, 204, 255));
 
+        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("ENCOUNTER DETAILS");
 
         updateBtn.setText("Update");
@@ -92,7 +97,20 @@ public class DoctorJPanel extends javax.swing.JPanel {
                 "PatientID", "BloodPressure", "Heart Rate", "Health Check", "Visit Date"
             }
         ));
+        tblPatientHistory1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblPatientHistory1MouseClicked(evt);
+            }
+        });
         jScrollPane7.setViewportView(tblPatientHistory1);
+
+        bp1.setText("HeartRate:");
+
+        heartRateTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                heartRateTxtActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -103,13 +121,14 @@ public class DoctorJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(255, 255, 255)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
                                 .addGap(70, 70, 70)
                                 .addComponent(bp)
                                 .addGap(47, 47, 47)
-                                .addComponent(bpTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(bpTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(53, 53, 53)
+                                .addComponent(bp1)
+                                .addGap(47, 47, 47)
+                                .addComponent(heartRateTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(340, 340, 340)
                                 .addComponent(updateBtn)
@@ -120,6 +139,10 @@ public class DoctorJPanel extends javax.swing.JPanel {
                         .addGap(38, 38, 38)
                         .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 885, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(336, 336, 336)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,22 +156,21 @@ public class DoctorJPanel extends javax.swing.JPanel {
                     .addComponent(updateBtn)
                     .addComponent(createBtn))
                 .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bp)
-                    .addComponent(bpTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(180, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(bp1)
+                        .addComponent(heartRateTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(bp)
+                        .addComponent(bpTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(174, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-     private void addVerifiers() {
-        InputVerifier integerVerifier = new VerifyNumber();
-        bpTxt.setInputVerifier(integerVerifier);
-
-    }
     
     private void createBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createBtnActionPerformed
         // TODO add your handling code here:
-        ViewJPanel viewPane = new ViewJPanel(personDirectory, patientDirectory, encounterHistory, jSplitPane1, hispDirectory);
+        ViewJPanel viewPane = new ViewJPanel(personDirectory, patientDirectory, encounterHistory, jSplitPane1, hispDirectory,doctorDirectory);
         jSplitPane1.setRightComponent(viewPane);
     }//GEN-LAST:event_createBtnActionPerformed
 
@@ -156,13 +178,29 @@ public class DoctorJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         int selectedRowIndex = tblPatientHistory1.getSelectedRow();
         DefaultTableModel model = (DefaultTableModel) tblPatientHistory1.getModel();
+        
         model.setValueAt(bpTxt.getText(), selectedRowIndex, 1);
-
+        model.setValueAt(heartRateTxt.getText(), selectedRowIndex, 2);
+        
     }//GEN-LAST:event_updateBtnActionPerformed
 
     private void bpTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bpTxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_bpTxtActionPerformed
+
+    private void heartRateTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_heartRateTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_heartRateTxtActionPerformed
+
+    private void tblPatientHistory1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPatientHistory1MouseClicked
+        // TODO add your handling code here:
+        int selectedRowIndex = tblPatientHistory1.getSelectedRow();
+
+        Encounter selectEncounter = encounterHistory.getListOfEncounter().get(selectedRowIndex);
+
+        bpTxt.setText(String.valueOf(selectEncounter.getVitalSigns().getBloodPressure()));
+        heartRateTxt.setText(String.valueOf(selectEncounter.getVitalSigns().getHeartRate()));
+    }//GEN-LAST:event_tblPatientHistory1MouseClicked
 
 
     private void displayEncounterHistory(){
@@ -182,8 +220,10 @@ public class DoctorJPanel extends javax.swing.JPanel {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bp;
+    private javax.swing.JLabel bp1;
     private javax.swing.JTextField bpTxt;
     private javax.swing.JButton createBtn;
+    private javax.swing.JTextField heartRateTxt;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JTable tblPatientHistory1;

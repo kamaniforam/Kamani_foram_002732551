@@ -100,7 +100,7 @@
                                       <Component id="btnCheck" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace min="0" pref="203" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="62" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -111,23 +111,22 @@
                               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="403" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="355" max="-2" attributes="0"/>
                               <Component id="jLabel2" min="-2" pref="145" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="252" max="-2" attributes="0"/>
+                              <Component id="btnUpdate1" min="-2" pref="165" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                              <Component id="btnSearch" min="-2" pref="114" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                              <Component id="btnSave" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="252" max="-2" attributes="0"/>
-              <Component id="btnUpdate1" min="-2" pref="165" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="btnSave" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="btnSearch" min="-2" pref="113" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -184,7 +183,7 @@
               <Component id="jScrollPane2" min="-2" pref="92" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnSearch" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="btnSearch" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
                   <Component id="btnSave" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
                   <Component id="btnUpdate1" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
               </Group>

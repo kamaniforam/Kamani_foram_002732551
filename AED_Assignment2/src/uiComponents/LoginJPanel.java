@@ -161,11 +161,11 @@ public class LoginJPanel extends javax.swing.JPanel {
                     jSplitPane1.setRightComponent(systemAdminPane);
                     }
                 case DOCTOR -> {
-                    DoctorJPanel doctorPane = new DoctorJPanel( encounterHistory, personDirectory, patientDirectory, hispDirectory,jSplitPane1);
+                    DoctorJPanel doctorPane = new DoctorJPanel( encounterHistory, personDirectory, patientDirectory, hispDirectory,jSplitPane1,doctorDirectory);
                     jSplitPane1.setRightComponent(doctorPane);
                     }
                 case PATIENT -> {
-                    CreateJPanel createPane = new CreateJPanel(personDirectory, patientDirectory, encounterHistory, jSplitPane1,hispDirectory);
+                    CreateJPanel createPane = new CreateJPanel(personDirectory, patientDirectory, encounterHistory, jSplitPane1,hispDirectory, doctorDirectory);
                     jSplitPane1.setRightComponent(createPane);
                     }
                 case COMMUNITY_ADMINISTRATOR -> {
@@ -173,7 +173,7 @@ public class LoginJPanel extends javax.swing.JPanel {
                     jSplitPane1.setRightComponent(communityAdminPane);
                     }
                 case HOSPITAL_ADMINISTRATOR -> {
-                    HospitalAdminJPanel hospitalAdminPane = new HospitalAdminJPanel(personDirectory, patientDirectory, encounterHistory, doctorDirectory,hispDirectory);
+                    HospitalAdminJPanel hospitalAdminPane = new HospitalAdminJPanel(personDirectory, patientDirectory, encounterHistory, doctorDirectory,hispDirectory,jSplitPane1);
                     jSplitPane1.setRightComponent(hospitalAdminPane);
                     }
                 default -> {

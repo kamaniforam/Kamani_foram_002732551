@@ -6,6 +6,8 @@ package uiComponents;
 
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import model.Doctor;
+import model.DoctorDirectory;
 import model.Encounter;
 import model.EncounterHistory;
 import model.Hospital;
@@ -19,6 +21,7 @@ import model.PersonDirectory;
  * @author foram
  */
 public class SearchJPanel extends javax.swing.JPanel {
+
     private javax.swing.JSplitPane jSplitPane1;
     /**
      * Creates new form SearchJPanel
@@ -27,16 +30,19 @@ public class SearchJPanel extends javax.swing.JPanel {
     PatientDirectory patientDirectory;
     PersonDirectory personDirectory;
     HospitalDirectory hospitalDirectory;
-  
-    public SearchJPanel(EncounterHistory encounterHistory, PatientDirectory patientDirectory,PersonDirectory personDirectory,javax.swing.JSplitPane jSplitPane1,HospitalDirectory hospitalDirectory) {
+    DoctorDirectory doctorDirectory;
+
+    public SearchJPanel(EncounterHistory encounterHistory, PatientDirectory patientDirectory, PersonDirectory personDirectory, javax.swing.JSplitPane jSplitPane1, HospitalDirectory hospitalDirectory, DoctorDirectory doctorDirectory) {
         initComponents();
         this.encounterHistory = encounterHistory;
         this.patientDirectory = patientDirectory;
         this.personDirectory = personDirectory;
         this.jSplitPane1 = jSplitPane1;
         this.hospitalDirectory = hospitalDirectory;
-        
-        displayEncounterHistory();  
+        this.doctorDirectory = doctorDirectory;
+
+        displayEncounterHistory();
+
     }
 
     /**
@@ -62,8 +68,8 @@ public class SearchJPanel extends javax.swing.JPanel {
         viewPerson = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
-        hospitalTable = new javax.swing.JTable();
-        btnSearch1 = new javax.swing.JButton();
+        DoctorTable = new javax.swing.JTable();
+        searchDoc = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(204, 204, 255));
         setForeground(new java.awt.Color(153, 255, 255));
@@ -140,28 +146,28 @@ public class SearchJPanel extends javax.swing.JPanel {
             }
         });
 
-        hospitalTable.setModel(new javax.swing.table.DefaultTableModel(
+        DoctorTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Hospital Id", "Hospital Name", "Community", "City"
+                "Hospital Id", "Hospital Name", "Community", "City", "Doctor Id", "Doctor Name"
             }
         ));
-        hospitalTable.addMouseListener(new java.awt.event.MouseAdapter() {
+        DoctorTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                hospitalTableMouseClicked(evt);
+                DoctorTableMouseClicked(evt);
             }
         });
-        jScrollPane4.setViewportView(hospitalTable);
+        jScrollPane4.setViewportView(DoctorTable);
 
-        btnSearch1.setText("Search Near By Hospitals");
-        btnSearch1.addActionListener(new java.awt.event.ActionListener() {
+        searchDoc.setText("Search Doctor");
+        searchDoc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSearch1ActionPerformed(evt);
+                searchDocActionPerformed(evt);
             }
         });
 
@@ -171,64 +177,60 @@ public class SearchJPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(viewPerson)
-                        .addGap(31, 31, 31)
-                        .addComponent(jButton1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(347, 347, 347)
-                                .addComponent(jLabel1))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(301, 301, 301)
-                                .addComponent(jLabel2)))
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jScrollPane4)
-                                .addGap(9, 9, 9))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(72, 72, 72)
                                         .addComponent(hospitalLbl1)
                                         .addGap(64, 64, 64)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(ddCommunity1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(50, 50, 50)
-                                                .addComponent(cityLbl))
-                                            .addComponent(btnSearch))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(ddCity1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(btnSearch1))
-                                        .addGap(145, 145, 145))
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 832, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 86, Short.MAX_VALUE)))))
+                                        .addComponent(ddCommunity1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(50, 50, 50)
+                                        .addComponent(cityLbl)
+                                        .addGap(64, 64, 64))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(27, 27, 27)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(searchDoc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(ddCity1, 0, 211, Short.MAX_VALUE)))
+                            .addComponent(jScrollPane2)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(viewPerson)
+                                .addGap(31, 31, 31)
+                                .addComponent(jButton1))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(422, 422, 422)
+                                .addComponent(jLabel1))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(399, 399, 399)
+                                .addComponent(jLabel2))
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 1023, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(34, 34, 34)
+                .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(29, 29, 29)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(viewPerson))
-                .addGap(25, 25, 25)
+                .addGap(4, 4, 4)
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(hospitalLbl1)
                     .addComponent(ddCommunity1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -237,10 +239,10 @@ public class SearchJPanel extends javax.swing.JPanel {
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSearch)
-                    .addComponent(btnSearch1))
+                    .addComponent(searchDoc, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(19, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -275,22 +277,21 @@ public class SearchJPanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_btnSearchActionPerformed
 
-        
     private void displayHospitalTableDetails() {
-        DefaultTableModel tblmodel = (DefaultTableModel) hospitalTable.getModel();
+        DefaultTableModel tblmodel = (DefaultTableModel) DoctorTable.getModel();
         tblmodel.setRowCount(0);
-       
+
         for (Hospital hospital : hospitalDirectory.getListOfHospital()) {
             Object[] row = new Object[4];
             row[0] = hospital.getHospitalId();
             row[1] = hospital.getHospitalName();
             row[2] = hospital.getCommunity();
             row[3] = hospital.getCity();
-            
+
             tblmodel.addRow(row);
         }
     }
-    
+
     private void ddCommunity1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ddCommunity1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ddCommunity1ActionPerformed
@@ -301,7 +302,7 @@ public class SearchJPanel extends javax.swing.JPanel {
 
     private void viewPersonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewPersonActionPerformed
         // TODO add your handling code here:
-        ViewJPanel viewPane = new ViewJPanel(personDirectory, patientDirectory, encounterHistory,jSplitPane1,hospitalDirectory);
+        ViewJPanel viewPane = new ViewJPanel(personDirectory, patientDirectory, encounterHistory, jSplitPane1, hospitalDirectory, doctorDirectory);
         jSplitPane1.setRightComponent(viewPane);
     }//GEN-LAST:event_viewPersonActionPerformed
 
@@ -313,67 +314,68 @@ public class SearchJPanel extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(this, "Appointment has been Canceled ");
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void hospitalTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hospitalTableMouseClicked
+    private void DoctorTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DoctorTableMouseClicked
+
+    }//GEN-LAST:event_DoctorTableMouseClicked
+
+    private void searchDocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchDocActionPerformed
         // TODO add your handling code here:
 
-//        int selectedRowIndex = hospitalTable.getSelectedRow();
-//        Hospital selectHospital = hospitalDirectory.getListOfHospital().get(selectedRowIndex);
-//
-//        ddCity1.setSelectedItem(selectHospital.getCity());
-//        ddCommunity1.setSelectedItem(selectHospital.getCommunity());
-    }//GEN-LAST:event_hospitalTableMouseClicked
-
-    private void btnSearch1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearch1ActionPerformed
-        // TODO add your handling code here:
-        
         String city = ddCity1.getSelectedItem().toString();
         String community = ddCommunity1.getSelectedItem().toString();
 
-        DefaultTableModel model = (DefaultTableModel) hospitalTable.getModel();
+        DefaultTableModel model = (DefaultTableModel) DoctorTable.getModel();
         model.setRowCount(0);
 
-        for (Hospital hospital : hospitalDirectory.getListOfHospital()) {
+        for (Doctor doc : doctorDirectory.getListOfDoctors()) {
+
             Object[] row = new Object[10];
+            
+            row[0] = doc;
+            
+            if (doc.getHospital().getCommunity().equals(community) && doc.getHospital().getCity().equals(city)) {
+                System.out.print(doc.getHospital().getHospitalId());
+                row[0] = doc.getHospital().getHospitalId();
+                row[1] = doc.getHospital().getHospitalName();
+                row[2] = doc.getHospital().getCommunity();
+                row[3] = doc.getHospital().getCity();
+                row[4] = doc.getDoctorId();
+                row[5] = doc.getDoctorName();
 
-            row[0] = hospital;
-
-            if (hospital.getCommunity().equals(community) && hospital.getCity().equals(city)) {
-
-                row[0] = hospital.getHospitalId();
-                row[1] = hospital.getHospitalName();
-                row[2] = hospital.getCommunity();
-                row[3] = hospital.getCity();
-             
                 model.addRow(row);
+
             }
+
         }
-    }//GEN-LAST:event_btnSearch1ActionPerformed
+
+
+    }//GEN-LAST:event_searchDocActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable DoctorTable;
     private javax.swing.JButton btnSearch;
-    private javax.swing.JButton btnSearch1;
     private javax.swing.JLabel cityLbl;
     private javax.swing.JComboBox<String> ddCity1;
     private javax.swing.JComboBox<String> ddCommunity1;
     private javax.swing.JLabel hospitalLbl1;
-    private javax.swing.JTable hospitalTable;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JButton searchDoc;
     private javax.swing.JTable tblPatientHistory;
     private javax.swing.JTable tblPatients;
     private javax.swing.JButton viewPerson;
     // End of variables declaration//GEN-END:variables
 
-    private void displayEncounterHistory(){
+    private void displayEncounterHistory() {
         DefaultTableModel model = (DefaultTableModel) tblPatientHistory.getModel();
         model.setRowCount(0);
-        for(Encounter encounter: encounterHistory.getListOfEncounter()){
-            Object[]row = new Object[10];
+        for (Encounter encounter : encounterHistory.getListOfEncounter()) {
+            Object[] row = new Object[10];
             row[0] = encounter.getPatientID();
             row[1] = encounter.getVitalSigns().getBloodPressure();
             row[2] = encounter.getVitalSigns().getHeartRate();
@@ -382,6 +384,23 @@ public class SearchJPanel extends javax.swing.JPanel {
             model.addRow(row);
         }
     }
-    
-}
 
+    private void PopulateDoctorsTable() {
+        DefaultTableModel model = (DefaultTableModel) DoctorTable.getModel();
+        model.setRowCount(0);
+
+        
+        for (Doctor doc : doctorDirectory.getListOfDoctors()) {
+            Object[] row = new Object[10];
+            row[0] = doc.getHospital().getHospitalId();
+            row[1] = doc.getHospital().getHospitalName();
+            row[2] = doc.getHospital().getCommunity();
+            row[3] = doc.getHospital().getCity();
+            row[4] = doc.getDoctorId();
+            row[5] = doc.getDoctorName();
+            model.addRow(row);
+        }
+
+    }
+
+}
