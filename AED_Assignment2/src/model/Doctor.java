@@ -12,15 +12,13 @@ public class Doctor {
     
     private String doctorName;
     private int doctorId;
-    private String doctorEmail;
-    private int phoneNo;
-    private String hospital;
+    private Hospital hospital;
 
-    public String getHospital() {
+    public Hospital getHospital() {
         return hospital;
     }
 
-    public void setHospital(String hospital) {
+    public void setHospital(Hospital hospital) {
         this.hospital = hospital;
     }
 
@@ -38,22 +36,6 @@ public class Doctor {
 
     public void setDoctorId(int doctorId) {
         this.doctorId = doctorId;
-    }
-
-    public String getDoctorEmail() {
-        return doctorEmail;
-    }
-
-    public void setDoctorEmail(String doctorEmail) {
-        this.doctorEmail = doctorEmail;
-    }
-
-    public int getPhoneNo() {
-        return phoneNo;
-    }
-
-    public void setPhoneNo(int phoneNo) {
-        this.phoneNo = phoneNo;
     }
     
 }

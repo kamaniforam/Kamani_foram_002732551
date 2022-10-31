@@ -10,22 +10,22 @@ package model;
  */
 public class VitalSigns {
 
-    private int bloodPressure;
-    private int heartRate;
+    private double bloodPressure;
+    private double heartRate;
 
-    public int getBloodPressure() {
+    public double getBloodPressure() {
         return bloodPressure;
     }
 
-    public void setBloodPressure(int bloodPressure) {
+    public void setBloodPressure(double bloodPressure) {
         this.bloodPressure = bloodPressure;
     }
 
-    public int getHeartRate() {
+    public double getHeartRate() {
         return heartRate;
     }
 
-    public void setHeartRate(int heartRate) {
+    public void setHeartRate(double heartRate) {
         this.heartRate = heartRate;
     }
 

@@ -7,10 +7,10 @@ import java.time.LocalDateTime;
 import java.util.List;
 import javax.swing.InputVerifier;
 import javax.swing.JOptionPane;
-
 import javax.swing.table.DefaultTableModel;
 import model.Encounter;
 import model.EncounterHistory;
+import model.HospitalDirectory;
 import model.House;
 import model.Patient;
 import model.PatientDirectory;
@@ -32,12 +32,15 @@ public class ViewJPanel extends javax.swing.JPanel {
     PersonDirectory personDirectory;
     PatientDirectory patientDirectory;
     EncounterHistory encounterHistory;
-    public ViewJPanel(PersonDirectory personDirectory, PatientDirectory patientDirectory, EncounterHistory encounterHistory, javax.swing.JSplitPane jSplitPane1) {
+    HospitalDirectory hospitalDirectory;
+    public ViewJPanel(PersonDirectory personDirectory, PatientDirectory patientDirectory, EncounterHistory encounterHistory, javax.swing.JSplitPane jSplitPane1,HospitalDirectory hospitalDirectory) {
         initComponents();
         this.personDirectory = personDirectory;
         this.patientDirectory = patientDirectory;
         this.encounterHistory = encounterHistory;
+        this.hospitalDirectory = hospitalDirectory;
         this.jSplitPane1 = jSplitPane1;
+        
         displayPersonTableDetails();
         displayPatientTableDetails();
         addVerifiers();
@@ -93,6 +96,8 @@ public class ViewJPanel extends javax.swing.JPanel {
         btnSearch = new javax.swing.JButton();
         btnSave = new javax.swing.JButton();
         btnUpdate1 = new javax.swing.JButton();
+        heartRateLbl = new javax.swing.JLabel();
+        heartRateTxt = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(204, 204, 255));
         setPreferredSize(new java.awt.Dimension(600, 600));
@@ -245,6 +250,14 @@ public class ViewJPanel extends javax.swing.JPanel {
             }
         });
 
+        heartRateLbl.setText("Heart Rate:");
+
+        heartRateTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                heartRateTxtActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -255,6 +268,12 @@ public class ViewJPanel extends javax.swing.JPanel {
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(30, 30, 30)
+                                .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblPersonID)
@@ -289,19 +308,20 @@ public class ViewJPanel extends javax.swing.JPanel {
                                     .addComponent(ddHouseNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtAge)
                                     .addComponent(ddCity, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(53, 53, 53)
-                                .addComponent(lblBloodPressure)
-                                .addGap(28, 28, 28)
-                                .addComponent(txtBloodPressure, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnCheck)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(30, 30, 30)
-                                .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(53, 53, 53)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(lblBloodPressure)
+                                            .addComponent(heartRateLbl))
+                                        .addGap(28, 28, 28)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtBloodPressure, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(heartRateTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(127, 127, 127)
+                                        .addComponent(btnCheck)))
+                                .addGap(0, 203, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -332,7 +352,7 @@ public class ViewJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnDelete)
                     .addComponent(btnUpdate))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtAge, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -340,20 +360,22 @@ public class ViewJPanel extends javax.swing.JPanel {
                         .addComponent(txtPersonID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(lblAge)
                         .addComponent(lblBloodPressure)
-                        .addComponent(txtBloodPressure, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnCheck)))
+                        .addComponent(txtBloodPressure, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblName)
                     .addComponent(lblCity)
-                    .addComponent(ddCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(ddCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(heartRateLbl)
+                    .addComponent(heartRateTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblAddress)
                     .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblCommunity)
-                    .addComponent(ddCommunity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ddCommunity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCheck))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblZipCode)
@@ -367,9 +389,9 @@ public class ViewJPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-
-                    .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(22, Short.MAX_VALUE))
+                    .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnUpdate1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -402,9 +424,11 @@ public class ViewJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         int selectedRowIndex = tblPerson.getSelectedRow();
         Person selectPerson = personDirectory.getListOfPerson().get(selectedRowIndex);
-        int bloodPressure = Integer.parseInt(txtBloodPressure.getText());
+        double bloodPressure = Integer.parseInt(txtBloodPressure.getText());
+        double heartRate = Integer.parseInt(heartRateTxt.getText());
         VitalSigns vitalSigns = new VitalSigns();
         vitalSigns.setBloodPressure(bloodPressure);
+        vitalSigns.setHeartRate(heartRate);
         House housing = new House();
        
         Patient patient = new Patient("", 0, 0, housing, vitalSigns, "", false);
@@ -470,13 +494,13 @@ public class ViewJPanel extends javax.swing.JPanel {
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         // TODO add your handling code here:
-        SearchJPanel searchPane = new SearchJPanel(encounterHistory, patientDirectory,personDirectory,jSplitPane1);
+        SearchJPanel searchPane = new SearchJPanel(encounterHistory, patientDirectory,personDirectory,jSplitPane1,hospitalDirectory);
         jSplitPane1.setRightComponent(searchPane);
     }//GEN-LAST:event_btnSearchActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
-        CreateJPanel createPane = new CreateJPanel(personDirectory, patientDirectory, encounterHistory, jSplitPane1);
+        CreateJPanel createPane = new CreateJPanel(personDirectory, patientDirectory, encounterHistory, jSplitPane1,hospitalDirectory);
         jSplitPane1.setRightComponent(createPane);
     }//GEN-LAST:event_btnSaveActionPerformed
 
@@ -494,10 +518,13 @@ public class ViewJPanel extends javax.swing.JPanel {
         boolean patientYN = false;
         int selectedRowIndex = tblPatient.getSelectedRow();
         DefaultTableModel model = (DefaultTableModel) tblPatient.getModel();
-
+//        Person person = (Person) model.getValueAt(selectedRowIndex , 0);
+     //System.out.println("print value ========="+model.getValueAt(selectedRowIndex , 0));
+       // System.out.println("check details:"+personDirectory.getListOfPerson());
         String patientName=String.valueOf(model.getValueAt(selectedRowIndex , 0));
-        List<Person> persons= personDirectory.getListOfPerson();
-/
+       List<Person> persons= personDirectory.getListOfPerson();
+//        patientYN = ifPatientExist(person.getNameOfPerson());
+//
         if(null!=patientName){
 
             JOptionPane.showMessageDialog(this, "Appointment Confirmed ");
@@ -505,7 +532,11 @@ public class ViewJPanel extends javax.swing.JPanel {
         else{
             JOptionPane.showMessageDialog(this, "Appointment Confirmed ");
         }
-    }
+    }//GEN-LAST:event_btnUpdate1ActionPerformed
+
+    private void heartRateTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_heartRateTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_heartRateTxtActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -518,6 +549,8 @@ public class ViewJPanel extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> ddCity;
     private javax.swing.JComboBox<String> ddCommunity;
     private javax.swing.JComboBox<String> ddHouseNumber;
+    private javax.swing.JLabel heartRateLbl;
+    private javax.swing.JTextField heartRateTxt;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;

@@ -18,8 +18,8 @@ public class HospitalDirectory {
         return listOfHospital;
     }
 
-    public void setListOfHospital(ArrayList<Hospital> listOfHospital) {
-        this.listOfHospital = listOfHospital;
+    public void setListOfHospital(Hospital hospital) {
+        this.listOfHospital.add(hospital);
     }
     
     public HospitalDirectory(){
@@ -31,11 +31,7 @@ public class HospitalDirectory {
         listOfHospital.add(hospital);
         return hospital;
     }
-    
-    public void deletePerson(Hospital hospital){
-        listOfHospital.remove(hospital);
-    }
-
+ 
     public void deleteDoctor(Hospital hospital) {
          listOfHospital.remove(hospital);
     }

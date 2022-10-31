@@ -4,27 +4,38 @@
  */
 package uiComponents;
 
+import javax.swing.InputVerifier;
 import javax.swing.table.DefaultTableModel;
 import model.Encounter;
 import model.EncounterHistory;
-import model.Person;
+import model.HospitalDirectory;
+import model.PatientDirectory;
+import model.PersonDirectory;
+import validations.VerifyNumber;
 
 /**
  *
  * @author foram
  */
 public class DoctorJPanel extends javax.swing.JPanel {
-
+       private javax.swing.JSplitPane jSplitPane1;
     /**
      * Creates new form PatientJPanel
      */
     
     EncounterHistory encounterHistory;
-    public DoctorJPanel(EncounterHistory encounterHistory) {
+    PersonDirectory personDirectory;
+    PatientDirectory patientDirectory;
+    HospitalDirectory hispDirectory;
+    public DoctorJPanel(EncounterHistory encounterHistory,  PersonDirectory personDirectory,PatientDirectory patientDirectory,
+    HospitalDirectory hispDirectory,javax.swing.JSplitPane jSplitPane1) {
         initComponents();
-        
+        this.personDirectory = personDirectory;
+        this.patientDirectory = patientDirectory;
         this.encounterHistory = encounterHistory;
+        this.jSplitPane1 = jSplitPane1;
         displayEncounterHistory();
+        addVerifiers();
     }
 
     /**
@@ -36,31 +47,15 @@ public class DoctorJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblPatientHistory = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         updateBtn = new javax.swing.JButton();
         createBtn = new javax.swing.JButton();
         bp = new javax.swing.JLabel();
         bpTxt = new javax.swing.JTextField();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        tblPatientHistory1 = new javax.swing.JTable();
 
-        tblPatientHistory.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "PatientID", "BloodPressure", "Health Check", "Visit Date"
-            }
-        ));
-        tblPatientHistory.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblPatientHistoryMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(tblPatientHistory);
+        setBackground(new java.awt.Color(204, 204, 255));
 
         jLabel1.setText("ENCOUNTER DETAILS");
 
@@ -86,6 +81,19 @@ public class DoctorJPanel extends javax.swing.JPanel {
             }
         });
 
+        tblPatientHistory1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "PatientID", "BloodPressure", "Heart Rate", "Health Check", "Visit Date"
+            }
+        ));
+        jScrollPane7.setViewportView(tblPatientHistory1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -93,31 +101,34 @@ public class DoctorJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(255, 255, 255)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(255, 255, 255)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(70, 70, 70)
+                                .addComponent(bp)
+                                .addGap(47, 47, 47)
+                                .addComponent(bpTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(340, 340, 340)
+                                .addComponent(updateBtn)
+                                .addGap(67, 67, 67)
+                                .addComponent(createBtn)))
+                        .addGap(0, 371, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(70, 70, 70)
-                        .addComponent(bp)
-                        .addGap(47, 47, 47)
-                        .addComponent(bpTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 889, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(340, 340, 340)
-                        .addComponent(updateBtn)
-                        .addGap(67, 67, 67)
-                        .addComponent(createBtn)))
-                .addContainerGap(23, Short.MAX_VALUE))
+                        .addGap(38, 38, 38)
+                        .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 885, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addComponent(jLabel1)
-                .addGap(27, 27, 27)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(updateBtn)
                     .addComponent(createBtn))
@@ -129,28 +140,25 @@ public class DoctorJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+     private void addVerifiers() {
+        InputVerifier integerVerifier = new VerifyNumber();
+        bpTxt.setInputVerifier(integerVerifier);
+
+    }
+    
     private void createBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createBtnActionPerformed
         // TODO add your handling code here:
+        ViewJPanel viewPane = new ViewJPanel(personDirectory, patientDirectory, encounterHistory, jSplitPane1, hispDirectory);
+        jSplitPane1.setRightComponent(viewPane);
     }//GEN-LAST:event_createBtnActionPerformed
 
     private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
         // TODO add your handling code here:
-        int selectedRowIndex = tblPatientHistory.getSelectedRow();
-        DefaultTableModel model = (DefaultTableModel) tblPatientHistory.getModel();
-        //Person selectPerson = personDirectory.getListOfPerson().get(selectedRowIndex);
+        int selectedRowIndex = tblPatientHistory1.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) tblPatientHistory1.getModel();
         model.setValueAt(bpTxt.getText(), selectedRowIndex, 1);
-//        displayEncounterHistory();
-    
-    }//GEN-LAST:event_updateBtnActionPerformed
 
-    private void tblPatientHistoryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPatientHistoryMouseClicked
-        // TODO add your handling code here:
-        int selectedRowIndex = tblPatientHistory.getSelectedRow();
-        
-        Encounter selectEncounter = encounterHistory.getListOfEncounter().get(selectedRowIndex);
-        bpTxt.setText(String.valueOf(selectEncounter.getVitalSigns().getBloodPressure()));
-      
-    }//GEN-LAST:event_tblPatientHistoryMouseClicked
+    }//GEN-LAST:event_updateBtnActionPerformed
 
     private void bpTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bpTxtActionPerformed
         // TODO add your handling code here:
@@ -158,14 +166,16 @@ public class DoctorJPanel extends javax.swing.JPanel {
 
 
     private void displayEncounterHistory(){
-        DefaultTableModel model = (DefaultTableModel) tblPatientHistory.getModel();
+     
+        DefaultTableModel model = (DefaultTableModel) tblPatientHistory1.getModel();
         model.setRowCount(0);
         for(Encounter encounter: encounterHistory.getListOfEncounter()){
-            Object[]row = new Object[4];
+            Object[]row = new Object[10];
             row[0] = encounter.getPatientID();
             row[1] = encounter.getVitalSigns().getBloodPressure();
-            row[2] = encounter.isIsStable() ? "Healthy" : "Not Healthy";
-            row[3] = encounter.getDateOfVisit();
+            row[2] = encounter.getVitalSigns().getHeartRate();
+            row[3] = encounter.isIsStable() ? "Healthy" : "Not Healthy";
+            row[4] = encounter.getDateOfVisit();
             model.addRow(row);
         }
     }
@@ -175,8 +185,8 @@ public class DoctorJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField bpTxt;
     private javax.swing.JButton createBtn;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblPatientHistory;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JTable tblPatientHistory1;
     private javax.swing.JButton updateBtn;
     // End of variables declaration//GEN-END:variables
 }

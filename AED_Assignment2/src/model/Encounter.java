@@ -52,6 +52,4 @@ public class Encounter {
         this.isStable = isStable;
     }
 
-    
-    
 }

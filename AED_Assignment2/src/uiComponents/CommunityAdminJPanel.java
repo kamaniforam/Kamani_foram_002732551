@@ -5,6 +5,7 @@
 package uiComponents;
 
 import java.awt.Color;
+import javax.swing.InputVerifier;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.DoctorDirectory;
@@ -14,6 +15,8 @@ import model.House;
 import model.PatientDirectory;
 import model.Person;
 import model.PersonDirectory;
+import validations.VerifyNumber;
+import validations.VerifyString;
 
 /**
  *
@@ -43,6 +46,7 @@ public class CommunityAdminJPanel extends javax.swing.JPanel {
 
         displayPersonTableDetails();
         displayHousesTableDetails();
+        addVerifiers();
     }
 
     /**
@@ -518,6 +522,17 @@ public class CommunityAdminJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+        private void addVerifiers() {
+        InputVerifier integerVerifier = new VerifyNumber();
+        txtPersonID.setInputVerifier(integerVerifier);
+        txtAge.setInputVerifier(integerVerifier);
+        txtZipCode.setInputVerifier(integerVerifier);
+        
+        InputVerifier stringVerifier = new VerifyString();
+        txtName.setInputVerifier(stringVerifier);
+        txtAddress.setInputVerifier(stringVerifier);
+    }
+    
     private void clearBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearBtnActionPerformed
         // TODO add your handling code here:
 
@@ -607,11 +622,7 @@ public class CommunityAdminJPanel extends javax.swing.JPanel {
         int selectedRowIndex = tblPerson.getSelectedRow();
 
         Person selectPerson = personDirectory.getListOfPerson().get(selectedRowIndex);
-        
-        txtName.setDisabledTextColor(Color.GRAY);
-        txtAge.setDisabledTextColor(Color.GRAY);
-        txtPersonID.setDisabledTextColor(Color.GRAY);
-        txtZipCode1.setDisabledTextColor(Color.GRAY);
+ 
         txtPersonID.setText(String.valueOf(selectPerson.getIdOfPerson()));
         txtAge.setText(String.valueOf(selectPerson.getAgeOfPerson()));
         txtName.setText(selectPerson.getNameOfPerson());

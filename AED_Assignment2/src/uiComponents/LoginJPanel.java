@@ -27,7 +27,7 @@ public class LoginJPanel extends javax.swing.JPanel {
     PersonDirectory personDirectory;
     EncounterHistory encounterHistory;
     DoctorDirectory doctorDirectory;
-    HospitalDirectory hospitalDirectory;
+    HospitalDirectory hispDirectory;
     
     public LoginJPanel(javax.swing.JSplitPane jSplitPane1,PersonDirectory personDirectory, PatientDirectory patientDirectory, 
             EncounterHistory encounterHistory, DoctorDirectory doctorDirectory, HospitalDirectory hospitalDirectory ) {
@@ -37,7 +37,7 @@ public class LoginJPanel extends javax.swing.JPanel {
        this.patientDirectory = patientDirectory;
        this.encounterHistory = encounterHistory;
        this.doctorDirectory = doctorDirectory;
-       this.hospitalDirectory =hospitalDirectory;
+       this.hispDirectory =hospitalDirectory;
        this.jSplitPane1 = jSplitPane1;
     }
 
@@ -82,7 +82,7 @@ public class LoginJPanel extends javax.swing.JPanel {
             }
         });
 
-        dropdownRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose a Role", "System administrator", "patient", "hospital administrator", "community administrator", "Doctor" }));
+        dropdownRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose a Role", "System administrator", "Patient", "Hospital administrator", "Community administrator", "Doctor" }));
         dropdownRole.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dropdownRoleActionPerformed(evt);
@@ -114,7 +114,7 @@ public class LoginJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(228, 228, 228)
                         .addComponent(loginBtn)))
-                .addContainerGap(115, Short.MAX_VALUE))
+                .addContainerGap(113, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -157,23 +157,23 @@ public class LoginJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "LOGIN SUCCESSFULL");
             if(null != UserDetails.Roles.fromString(role))switch (UserDetails.Roles.fromString(role)) {
                 case SYSTEM_ADMINISTRATOR -> {
-                    SystemAdminJPanel systemAdminPane = new SystemAdminJPanel(personDirectory, patientDirectory, encounterHistory, doctorDirectory,hospitalDirectory);
+                    SystemAdminJPanel systemAdminPane = new SystemAdminJPanel(personDirectory, patientDirectory, encounterHistory, doctorDirectory,hispDirectory);
                     jSplitPane1.setRightComponent(systemAdminPane);
                     }
                 case DOCTOR -> {
-                    DoctorJPanel doctorPane = new DoctorJPanel(encounterHistory);
+                    DoctorJPanel doctorPane = new DoctorJPanel( encounterHistory, personDirectory, patientDirectory, hispDirectory,jSplitPane1);
                     jSplitPane1.setRightComponent(doctorPane);
                     }
                 case PATIENT -> {
-                    CreateJPanel createPane = new CreateJPanel(personDirectory, patientDirectory, encounterHistory, jSplitPane1);
+                    CreateJPanel createPane = new CreateJPanel(personDirectory, patientDirectory, encounterHistory, jSplitPane1,hispDirectory);
                     jSplitPane1.setRightComponent(createPane);
                     }
                 case COMMUNITY_ADMINISTRATOR -> {
-                    CommunityAdminJPanel communityAdminPane = new CommunityAdminJPanel(personDirectory,patientDirectory, encounterHistory,doctorDirectory,hospitalDirectory,jSplitPane1);
+                    CommunityAdminJPanel communityAdminPane = new CommunityAdminJPanel(personDirectory,patientDirectory, encounterHistory,doctorDirectory,hispDirectory,jSplitPane1);
                     jSplitPane1.setRightComponent(communityAdminPane);
                     }
                 case HOSPITAL_ADMINISTRATOR -> {
-                    HospitalAdminJPanel hospitalAdminPane = new HospitalAdminJPanel(personDirectory, patientDirectory, encounterHistory, doctorDirectory,hospitalDirectory);
+                    HospitalAdminJPanel hospitalAdminPane = new HospitalAdminJPanel(personDirectory, patientDirectory, encounterHistory, doctorDirectory,hispDirectory);
                     jSplitPane1.setRightComponent(hospitalAdminPane);
                     }
                 default -> {

@@ -66,5 +66,28 @@ public class Patient extends Person {
         }
         return isPatientNormal;
     }
+    
+    private boolean isNormal(int patAge) {
+        boolean isNorm = false;
+        if(patAge <= 40){
+            if((vitalSigns.getBloodPressure() <= 130 && vitalSigns.getBloodPressure()>=90) && (vitalSigns.getHeartRate() <= 100 && vitalSigns.getHeartRate()>=90)){
+            isNorm = true;
+            }
+            else{
+            isNorm = false;
+            }
+            
+        }
+        else if (patAge >= 41 && patAge <= 100){
+            if((vitalSigns.getBloodPressure()<= 140 && vitalSigns.getBloodPressure()>=100) && (vitalSigns.getHeartRate() <= 80 && vitalSigns.getHeartRate()>=70)){
+            isNorm=  true;
+            }
+            else{
+            isNorm = false;
+            }
+        }
+        return isNorm;
+        
+    }
 
 }
